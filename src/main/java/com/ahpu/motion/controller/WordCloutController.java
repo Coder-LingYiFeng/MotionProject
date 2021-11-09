@@ -1,24 +1,45 @@
 package com.ahpu.motion.controller;
 
 import com.ahpu.motion.bean.Device;
+import com.ahpu.motion.bean.Sentence;
+import com.ahpu.motion.service.DeviceService;
+import com.ahpu.motion.service.SentenceService;
 import com.ahpu.motion.utils.ParticipleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
 public class WordCloutController {
     @Autowired
     ParticipleUtil participleUtil;
+    @Autowired
+    DeviceService deviceService;
+    @Autowired
+    SentenceService sentenceService;
 
-    @PostMapping("/getWordCloud")
-    public Map<String, Integer> getWordCloud(Device device){
+
+    @PostMapping("/getWordCloudByTimeSection")
+    public Map<String, Integer> getWordCloud(@RequestBody Device device){
+        String startTime = device.getStartTime();
+        String endTime = device.getEndTime();
+//        System.out.println(startTime);
+//        System.out.println(endTime);
+//        System.out.println(device);
         Integer createUserId = device.getCreateUserId();
-
-        return participleUtil.getParticipleRes("今天真开心！");
+        String name = device.getName();
+        Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
+        Integer deviceId = deviceInfo.getId();
+        System.out.println(deviceId);
+        ArrayList<Sentence> sentenceInfoList = sentenceService.selectSentenceBytimeSection(deviceId,startTime,endTime);
+//        sentenceInfoList.forEach(System.out::println);
+        StringBuilder sb=new StringBuilder();
+        sentenceInfoList.forEach(sentenceInfo-> sb.append(sentenceInfo.getSentence()));
+        String sentences = sb.toString();
+        System.out.println(sentences);
+        return participleUtil.getParticipleRes(sentences);
 
     }
 }
