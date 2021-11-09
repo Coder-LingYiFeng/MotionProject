@@ -1,6 +1,7 @@
 package com.ahpu.motion.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,4 +19,8 @@ public class Device {
     private Integer createUserId;
     private String scribe;
     private Date createDate;
+    @TableField(exist = false)
+    private String startTime;
+    @TableField(exist = false)
+    private String endTime;
 }
