@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -22,7 +23,7 @@ public class WordCloutController {
 
 
     @PostMapping("/getWordCloudByTimeSection")
-    public Map<String, Integer> getWordCloud(@RequestBody Device device){
+    public ArrayList<Map<String, String>> getWordCloud(@RequestBody Device device){
         String startTime = device.getStartTime();
         String endTime = device.getEndTime();
 //        System.out.println(startTime);
@@ -38,8 +39,15 @@ public class WordCloutController {
         StringBuilder sb=new StringBuilder();
         sentenceInfoList.forEach(sentenceInfo-> sb.append(sentenceInfo.getSentence()));
         String sentences = sb.toString();
-        System.out.println(sentences);
-        return participleUtil.getParticipleRes(sentences);
+        Map<String, Integer> participleRes = participleUtil.getParticipleRes(sentences);
+        ArrayList<Map<String,String>> resList=new ArrayList<>();
+        participleRes.forEach((k,v)->{
+            HashMap<String, String> tempMap = new HashMap<>();
+            tempMap.put("name",k);
+            tempMap.put("value",String.valueOf(v));
+            resList.add(tempMap);
+        });
+        return resList;
 
     }
 }
