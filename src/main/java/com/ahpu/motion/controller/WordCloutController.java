@@ -23,7 +23,8 @@ public class WordCloutController {
 
 
     @PostMapping("/getWordCloudByTimeSection")
-    public ArrayList<Map<String, String>> getWordCloud(@RequestBody Device device){
+    public Map<String,Object> getWordCloud(@RequestBody Device device){
+        HashMap<String, Object> resMap = new HashMap<>();
         String startTime = device.getStartTime();
         String endTime = device.getEndTime();
 //        System.out.println(startTime);
@@ -32,22 +33,37 @@ public class WordCloutController {
         Integer createUserId = device.getCreateUserId();
         String name = device.getName();
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
+        ArrayList<Map<String, String>> resList = new ArrayList<>();
+        if(deviceInfo==null){
+            resMap.put("status","ERROR");
+            resMap.put("message","无此设备");
+            resMap.put("data",resList);
+            return resMap;
+        }
         Integer deviceId = deviceInfo.getId();
         System.out.println(deviceId);
         ArrayList<Sentence> sentenceInfoList = sentenceService.selectSentenceBytimeSection(deviceId,startTime,endTime);
 //        sentenceInfoList.forEach(System.out::println);
-        StringBuilder sb=new StringBuilder();
-        sentenceInfoList.forEach(sentenceInfo-> sb.append(sentenceInfo.getSentence()));
+        if (sentenceInfoList.size()==0){
+            resMap.put("status","ERROR");
+            resMap.put("message","无数据，请调大时间差");
+            resMap.put("data",resList);
+            return resMap;
+        }
+        StringBuilder sb = new StringBuilder();
+        sentenceInfoList.forEach(sentenceInfo -> sb.append(sentenceInfo.getSentence()));
         String sentences = sb.toString();
         Map<String, Integer> participleRes = participleUtil.getParticipleRes(sentences);
-        ArrayList<Map<String,String>> resList=new ArrayList<>();
-        participleRes.forEach((k,v)->{
+        participleRes.forEach((k, v) -> {
             HashMap<String, String> tempMap = new HashMap<>();
-            tempMap.put("name",k);
-            tempMap.put("value",String.valueOf(v));
+            tempMap.put("name", k);
+            tempMap.put("value", String.valueOf(v));
             resList.add(tempMap);
         });
-        return resList;
+        resMap.put("status","OK");
+        resMap.put("message","数据获取成功");
+        resMap.put("data",resList);
+        return resMap;
 
     }
 }
