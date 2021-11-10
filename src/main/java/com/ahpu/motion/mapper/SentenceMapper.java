@@ -15,6 +15,7 @@ public interface SentenceMapper extends BaseMapper<Sentence> {
     ArrayList<Sentence> selectSentenceBytimeSection(Integer deviceId, String startTime, String endTime);
 
     @Insert("insert into sentence(device_id, sentence, sentiment, confidence, positive_prob, negative_prob) " +
-            "values (#{sentence.deviceId},#{sentence.sentence},#{sentence.sentiment},#{sentence.confidence},#{sentence.positiveProb},#{sentence.negativeProb})")
-    void insertSentence(Sentence sentence);
+            "values (#{deviceId},#{sentence},#{sentiment},#{confidence},#{positiveProb},#{negativeProb})")
+    void insertSentence(Integer deviceId, String sentence, Integer sentiment, Double confidence, Double positiveProb, Double negativeProb);
+
 }

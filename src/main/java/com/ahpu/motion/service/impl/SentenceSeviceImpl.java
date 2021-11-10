@@ -21,7 +21,7 @@ public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> im
     }
 
     @Override
-    public void insertSentence(Sentence sentence) {
-        sentenceMapper.insertSentence(sentence);
+    public void insertSentence(Integer deviceId, String sentence, Integer sentiment, Double confidence, Double positiveProb, Double negativeProb) {
+        sentenceMapper.insertSentence(deviceId, sentence, sentiment, confidence, positiveProb, negativeProb);
     }
 }
