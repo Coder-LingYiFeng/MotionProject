@@ -1,6 +1,7 @@
 package com.ahpu.motion.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class Sentence {
     @TableId(value = "id",type = IdType.AUTO)
@@ -20,6 +21,10 @@ public class Sentence {
     private Integer sentiment;
     private Double confidence;
     private Double positiveProb;
+    private Double negativeProb;
+    @TableField(exist = false)
+    private String mqttPub;
+
 
     public Sentence(Integer deviceId, String sentence, Integer sentiment, Double confidence, Double positiveProb, Double negativeProb) {
         this.deviceId = deviceId;
@@ -30,7 +35,6 @@ public class Sentence {
         this.negativeProb = negativeProb;
     }
 
-    private Double negativeProb;
 
 
 }
