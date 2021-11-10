@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> implements SentenceService  {
+public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> implements SentenceService {
 
     @Autowired
     SentenceMapper sentenceMapper;
 
     @Override
     public ArrayList<Sentence> selectSentenceBytimeSection(Integer deviceId, String startTime, String endTime) {
-        return sentenceMapper.selectSentenceBytimeSection(deviceId,startTime,endTime);
+        return sentenceMapper.selectSentenceBytimeSection(deviceId, startTime, endTime);
+    }
+
+    @Override
+    public void insertSentence(Sentence sentence) {
+        sentenceMapper.insertSentence(sentence);
     }
 }
