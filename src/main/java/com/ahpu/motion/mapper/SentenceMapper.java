@@ -18,4 +18,6 @@ public interface SentenceMapper extends BaseMapper<Sentence> {
             "values (#{deviceId},#{sentence},#{sentiment},#{confidence},#{positiveProb},#{negativeProb})")
     void insertSentence(Integer deviceId, String sentence, Integer sentiment, Double confidence, Double positiveProb, Double negativeProb);
 
+    @Select("select * from sentence where device_id=#{deviceId}")
+    ArrayList<Sentence> selectAllSentenceMessageByDeviceId(Integer deviceId);
 }
