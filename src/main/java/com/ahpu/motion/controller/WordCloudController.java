@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class WordCloutController {
+public class WordCloudController {
     @Autowired
     ParticipleUtil participleUtil;
     @Autowired
@@ -64,6 +64,5 @@ public class WordCloutController {
         resMap.put("message","数据获取成功");
         resMap.put("data",resList);
         return resMap;
-
     }
 }
