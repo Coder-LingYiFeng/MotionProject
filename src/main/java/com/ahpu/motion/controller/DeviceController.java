@@ -5,9 +5,13 @@ import com.ahpu.motion.bean.Status;
 import com.ahpu.motion.bean.User;
 import com.ahpu.motion.service.DeviceService;
 import com.ahpu.motion.service.UserService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -20,22 +24,39 @@ public class DeviceController {
     UserService userService;
 
     @PostMapping("/addDevice")
+    @JsonIgnoreProperties(value = {"startTime","endTim"})
     public Status addDevice(@RequestBody Device device){
         String name = device.getName();
         Integer createUserId = device.getCreateUserId();
         String scribe = device.getScribe();
+        String mqttPub = device.getMqttPub();
+        String mqttSub = device.getMqttSub();
         if (userService.getById(createUserId)==null)
             return new Status("ERROR","设备管理者不存在",null);
-
         if (name==null||"".equals(name))
             return new Status("ERROR","设备名为空",null);
         if (createUserId == null)
             return new Status("ERROR","设备ID为空",null);
+        if (mqttPub == null)
+            return new Status("ERROR","设备mqttPub为空",null);
+        if (mqttSub == null)
+            return new Status("ERROR","设备mqttSub为空",null);
 
         Device deviceInfo = deviceService.getDeviceByNameAndId(name,createUserId);
         if (deviceInfo!=null)
             return new Status("ERROR","设备名已存在",null);
+        HashSet<String> mqttPubSet=new HashSet<>();
+        HashSet<String> mqttSubSet=new HashSet<>();
 
+        List<Device> allDeviceInfo = deviceService.getAllDeviceInfo();
+        allDeviceInfo.forEach(info->{
+            mqttPubSet.add(info.getMqttPub());
+            mqttSubSet.add(info.getMqttSub());
+        });
+        if (!mqttPubSet.add(mqttPub))
+            return new Status("ERROR","mqttPub已存在",null);
+        if (!mqttSubSet.add(mqttSub))
+            return new Status("ERROR","mqttSub已存在",null);
         deviceService.save(device);
         return new Status("OK","设备添加成功",device);
     }
