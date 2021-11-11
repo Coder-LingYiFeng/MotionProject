@@ -9,9 +9,7 @@ import com.ahpu.motion.utils.StatisticalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class WordCloudController {
@@ -49,7 +47,7 @@ public class WordCloudController {
 //        sentenceInfoList.forEach(System.out::println);
         if (sentenceInfoList.size()==0){
             resMap.put("status","ERROR");
-            resMap.put("message","无数据，请调大时间差");
+            resMap.put("message","无数据，请调大时间差,并检查是否存在该设备相关语句信息");
             resMap.put("data",resList);
             return resMap;
         }
