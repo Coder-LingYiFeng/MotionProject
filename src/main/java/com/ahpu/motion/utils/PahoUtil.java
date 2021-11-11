@@ -16,6 +16,7 @@ public class PahoUtil {
     String clientId = "emqx_test";
     MemoryPersistence persistence = new MemoryPersistence();
     MqttClient client;
+    MqttConnectOptions connOpts = new MqttConnectOptions();
 
     {
         try {
@@ -25,11 +26,11 @@ public class PahoUtil {
         }
     }
 
-    public void sendMessage(String pubTopic, Sentence sentenceInfo) {
+    public void sendMessage(String pubTopic, JSONObject sentenceInfo) {
         int qos = 0;
         try {
             // MQTT 连接选项
-            MqttConnectOptions connOpts = new MqttConnectOptions();
+
             connOpts.setUserName("emqx_test");
             connOpts.setPassword("emqx_test_password".toCharArray());
             // 保留会话
@@ -50,7 +51,7 @@ public class PahoUtil {
 
             client.disconnect();
             System.out.println("Disconnected");
-            client.close();
+//            client.close();
 //            System.exit(0);
         } catch (MqttException me) {
             System.out.println("reason " + me.getReasonCode());
