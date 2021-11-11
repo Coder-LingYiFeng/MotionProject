@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Component
 public class ParticipleUtil {
-    public Map<String, Integer> getParticipleRes(String sentence) {
+    public String getParticipleRes(String sentence) {
         JiebaSegmenter jiebaSegmenter = new JiebaSegmenter();
         List<String> strings = jiebaSegmenter.sentenceProcess(sentence);
         StringBuilder sb = new StringBuilder();
@@ -25,24 +25,10 @@ public class ParticipleUtil {
             }
             sb.append(string).append(" ");
         }
-        String sentenceResult = sb.substring(0, sb.length() - 1);
 
-        return statisticalWords(sentenceResult);
+        return sb.substring(0, sb.length() - 1);
 
     }
 
-    private Map<String, Integer> statisticalWords(String sentence) {
-        String[] words = sentence.split(" ");
-        // 统计词频率
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String word : words) {
-            if (!map.containsKey(word)) {
-                map.put(word, 1);
-            } else {
-                map.replace(word, map.get(word) + 1);
-            }
-        }
-        return map;
-    }
 
 }
