@@ -33,4 +33,9 @@ public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> impleme
     public List<Device> getAllByCreateUserId(Integer createUserId) {
         return deviceMapper.getAllByCreateUserId(createUserId);
     }
+
+    @Override
+    public List<Device> getAllDeviceInfo() {
+        return deviceMapper.getAllDeviceInfo();
+    }
 }

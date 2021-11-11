@@ -2,6 +2,7 @@ package com.ahpu.motion.mapper;
 
 import com.ahpu.motion.bean.Device;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -23,4 +24,7 @@ public interface DeviceMapper extends BaseMapper<Device> {
 
     @Select("select * from device where create_user_id=#{createUserId}")
     List<Device> getAllByCreateUserId(Integer createUserId);
+
+    @Select("select * from device")
+    List<Device> getAllDeviceInfo();
 }

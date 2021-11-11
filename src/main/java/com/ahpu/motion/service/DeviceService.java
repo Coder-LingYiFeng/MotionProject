@@ -17,5 +17,6 @@ public interface DeviceService extends IService<Device> {
 
     List<Device> getAllByCreateUserId(Integer createUserId);
 
+    List<Device> getAllDeviceInfo();
 
 }
