@@ -5,6 +5,7 @@ import com.ahpu.motion.bean.Sentence;
 import com.ahpu.motion.service.DeviceService;
 import com.ahpu.motion.service.SentenceService;
 import com.ahpu.motion.utils.ParticipleUtil;
+import com.ahpu.motion.utils.StatisticalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,8 @@ public class WordCloudController {
     DeviceService deviceService;
     @Autowired
     SentenceService sentenceService;
+    @Autowired
+    StatisticalUtil statisticalUtil;
 
 
     @PostMapping("/getWordCloudByTimeSection")
@@ -53,7 +56,8 @@ public class WordCloudController {
         StringBuilder sb = new StringBuilder();
         sentenceInfoList.forEach(sentenceInfo -> sb.append(sentenceInfo.getSentence()));
         String sentences = sb.toString();
-        Map<String, Integer> participleRes = participleUtil.getParticipleRes(sentences);
+//        Map<String, Integer> participleRes = participleUtil.getParticipleRes(sentences);
+        Map<String, Integer> participleRes = statisticalUtil.statisticalWords(participleUtil.getParticipleRes(sentences));
         participleRes.forEach((k, v) -> {
             HashMap<String, String> tempMap = new HashMap<>();
             tempMap.put("name", k);
