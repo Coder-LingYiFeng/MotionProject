@@ -30,5 +30,10 @@ public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> im
         return sentenceMapper.selectAllSentenceMessageByDeviceId(deviceId);
     }
 
+    @Override
+    public ArrayList<Integer> selectSentimentBytimeSection(Integer deviceId, String startTime, String endTime) {
+        return sentenceMapper.selectSentimentBytimeSection(deviceId, startTime, endTime);
+    }
+
 
 }

@@ -20,4 +20,7 @@ public interface SentenceMapper extends BaseMapper<Sentence> {
 
     @Select("select * from sentence where device_id=#{deviceId}")
     ArrayList<Sentence> selectAllSentenceMessageByDeviceId(Integer deviceId);
+
+    @Select("select sentiment from sentence where device_id=#{deviceId} and time>=#{startTime} and time<=#{endTime}")
+    ArrayList<Integer> selectSentimentBytimeSection(Integer deviceId, String startTime, String endTime);
 }
