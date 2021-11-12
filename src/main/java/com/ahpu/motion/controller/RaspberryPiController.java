@@ -45,6 +45,8 @@ public class RaspberryPiController {
         if (deviceId == null)
             return new Status("ERROR", "设备id为空", "");
         Device deviceInfoById = deviceService.getById(deviceId);
+        if (deviceInfoById==null)
+            return new Status("ERROR", "插入数据库失败，无此设备", null);
         String mqttPub= deviceInfoById.getMqttPub();
 
         String motionStr = motionUtil.getResult(sentence).toString();
@@ -61,7 +63,7 @@ public class RaspberryPiController {
             sentenceService.insertSentence(deviceId, sentence, sentiment, confidence, positiveProb, negativeProb);
         } catch (Exception e) {
             System.out.println("Exception = " + e);
-            return new Status("ERROR", "插入数据库失败，可能为外键约束错误，请检查数据库中deviceId关联的user('id')是否存在！", "");
+            return new Status("ERROR", "插入数据库失败，无此设备", null);
         }
         HashMap<String,Object> sentenceInfoMap=new HashMap<>();
         sentenceInfoMap.put("deviceId", deviceId);
