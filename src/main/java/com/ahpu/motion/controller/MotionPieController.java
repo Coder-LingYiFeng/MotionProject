@@ -41,7 +41,6 @@ public class MotionPieController {
         if(deviceInfo==null){
             resMap.put("status","ERROR");
             resMap.put("message","无此设备");
-            resMap.put("data",resList);
             return resMap;
         }
         Integer deviceId = deviceInfo.getId();
@@ -50,7 +49,6 @@ public class MotionPieController {
         if (sentimentList.size()==0){
             resMap.put("status","ERROR");
             resMap.put("message","无数据，请调大时间差");
-            resMap.put("data",resList);
             return resMap;
         }
         StringBuilder sb = new StringBuilder();
@@ -79,7 +77,8 @@ public class MotionPieController {
         });
         resMap.put("status","OK");
         resMap.put("message","数据获取成功");
-        resMap.put("data",resList);
+        if (resList.size()!=0)
+            resMap.put("data",resList);
         return resMap;
     }
 }

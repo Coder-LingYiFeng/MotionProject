@@ -39,17 +39,15 @@ public class WordCloudController {
         if(deviceInfo==null){
             resMap.put("status","ERROR");
             resMap.put("message","无此设备");
-            resMap.put("data",resList);
             return resMap;
         }
         Integer deviceId = deviceInfo.getId();
-        System.out.println(deviceId);
+//        System.out.println(deviceId);
         ArrayList<Sentence> sentenceInfoList = sentenceService.selectSentenceBytimeSection(deviceId,startTime,endTime);
 //        sentenceInfoList.forEach(System.out::println);
         if (sentenceInfoList.size()==0){
             resMap.put("status","ERROR");
             resMap.put("message","无数据，请调大时间差,并检查是否存在该设备相关语句信息");
-            resMap.put("data",resList);
             return resMap;
         }
         StringBuilder sb = new StringBuilder();
@@ -65,7 +63,9 @@ public class WordCloudController {
         });
         resMap.put("status","OK");
         resMap.put("message","数据获取成功");
-        resMap.put("data",resList);
+        System.out.println("resList.size() = " + resList.size());
+        if (resList.size()!=0)
+            resMap.put("data",resList);
         return resMap;
     }
 }
