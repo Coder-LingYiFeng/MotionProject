@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
+@RequestMapping("/deviceRecord")
 public class DeviceController {
 
     @Autowired
