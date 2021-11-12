@@ -79,13 +79,13 @@ public class DeviceController {
     }
 
     @GetMapping("/getAllDevice")
-    public Status getAllDevice(@RequestParam Integer id){
+    public Status getAllDevice(@RequestParam Integer createUserId){
 //        public Status getAllDevice(@RequestBody User user){
 //        Integer id = user.getId();
-        User userInfo = userService.getById(id);
+        User userInfo = userService.getById(createUserId);
         if (userInfo==null)
             return new Status("ERROR","用户不存在",null);
-        List<Device> allDeviceInfo = deviceService.getAllByCreateUserId(id);
+        List<Device> allDeviceInfo = deviceService.getAllByCreateUserId(createUserId);
         int count = allDeviceInfo.size();
 //        allDeviceInfo.forEach(System.out::println);
         return new Status("OK",count+"个设备信息获取成功",allDeviceInfo);
