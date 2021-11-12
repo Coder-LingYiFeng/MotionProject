@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@RequestMapping("/dataAPI")
 public class WordCloudController {
     @Autowired
     ParticipleUtil participleUtil;

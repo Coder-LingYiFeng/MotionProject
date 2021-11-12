@@ -8,6 +8,7 @@ import com.ahpu.motion.service.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @RestController
+@RequestMapping("/dataAPI")
 public class SentenceMessageController {
 
     @Autowired
@@ -41,8 +42,8 @@ public class SentenceMessageController {
         return new Status("OK", "数据查询成功", sentences);
     }
 
-    @PostMapping("getSentenceByDeviceIdOnOneoday")
-    public Status getSentenceByDeviceIdOnOneoday(@RequestBody Device device) {
+    @PostMapping("getSentenceByDeviceIdOnOneday")
+    public Status getSentenceByDeviceIdOnOneday(@RequestBody Device device) {
         String name = device.getName();
         Integer createUserId = device.getCreateUserId();
         if (name == null || "".equals(name))
