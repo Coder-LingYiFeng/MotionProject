@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public interface SentenceService extends IService<Sentence> {
@@ -17,5 +18,8 @@ public interface SentenceService extends IService<Sentence> {
     ArrayList<Sentence> selectAllSentenceMessageByDeviceId(Integer deviceId);
 
     ArrayList<Integer> selectSentimentBytimeSection(Integer deviceId, String startTime, String endTime);
+
+    ArrayList<Sentence> getSentenceByDeviceIdOnOneday(Integer deviceId, String yesterdayTime);
+
 
 }

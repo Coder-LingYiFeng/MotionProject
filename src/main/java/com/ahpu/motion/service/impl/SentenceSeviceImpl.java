@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> implements SentenceService {
@@ -33,6 +34,11 @@ public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> im
     @Override
     public ArrayList<Integer> selectSentimentBytimeSection(Integer deviceId, String startTime, String endTime) {
         return sentenceMapper.selectSentimentBytimeSection(deviceId, startTime, endTime);
+    }
+
+    @Override
+    public ArrayList<Sentence> getSentenceByDeviceIdOnOneday(Integer deviceId, String yesterdayTime) {
+        return sentenceMapper.getSentenceByDeviceIdOnOneday(deviceId,yesterdayTime);
     }
 
 

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Mapper
 public interface SentenceMapper extends BaseMapper<Sentence> {
@@ -23,4 +24,7 @@ public interface SentenceMapper extends BaseMapper<Sentence> {
 
     @Select("select sentiment from sentence where device_id=#{deviceId} and time>=#{startTime} and time<=#{endTime}")
     ArrayList<Integer> selectSentimentBytimeSection(Integer deviceId, String startTime, String endTime);
+
+    @Select("select * from sentence where device_id=#{deviceId} and time>=#{yesterdayTime}")
+    ArrayList<Sentence> getSentenceByDeviceIdOnOneday(Integer deviceId, String yesterdayTime);
 }
