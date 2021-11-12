@@ -27,7 +27,7 @@ public class LoginController {
         User userInfo = userService.getUserByUserName(userName);
 //        System.out.println("userInfo = " + userInfo);
         if (userInfo == null) {
-            User tempUser = new User(userName, passWord);
+            User tempUser = new User(userName);
             userService.save(tempUser);
             return new Status("OK", "注册成功", tempUser);
         }
@@ -46,7 +46,7 @@ public class LoginController {
 
         if (userInfo != null) {
             if (passWord.equals(userInfo.getPassWord()))
-                return new Status("OK", "登陆成功", userInfo);
+                return new Status("OK", "登陆成功", new User(userInfo.getId(),userInfo.getUserName()));
             return new Status("ERROR", "密码错误", null);
         } else {
             return new Status("ERROR", "用户名不存在", null);
