@@ -34,9 +34,9 @@ public class DeviceController {
             return new Status("ERROR","设备名为空",null);
         if (createUserId == null)
             return new Status("ERROR","设备ID为空",null);
-        if (mqttPub == null)
+        if (mqttPub == null||"".equals(mqttPub))
             return new Status("ERROR","设备mqttPub为空",null);
-        if (mqttSub == null)
+        if (mqttSub == null||"".equals(mqttSub))
             return new Status("ERROR","设备mqttSub为空",null);
 
         Device deviceInfo = deviceService.getDeviceByNameAndId(name,createUserId);
