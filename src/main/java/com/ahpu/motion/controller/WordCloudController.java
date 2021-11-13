@@ -34,6 +34,27 @@ public class WordCloudController {
 //        System.out.println(device);
         Integer createUserId = device.getCreateUserId();
         String name = device.getName();
+        if(createUserId == null){
+            resMap.put("status","ERROR");
+            resMap.put("message","createUserId为空");
+            return resMap;
+        }
+        if(name==null||"".equals(name)){
+            resMap.put("status","ERROR");
+            resMap.put("message","设备名为空");
+            return resMap;
+        }
+        if(startTime==null||"".equals(startTime)){
+            resMap.put("status","ERROR");
+            resMap.put("message","查询开始时间为空");
+            return resMap;
+        }
+        if(endTime==null||"".equals(endTime)){
+            resMap.put("status","ERROR");
+            resMap.put("message","查询结束时间为空");
+            return resMap;
+        }
+
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
         ArrayList<Map<String, String>> resList = new ArrayList<>();
         if(deviceInfo==null){
