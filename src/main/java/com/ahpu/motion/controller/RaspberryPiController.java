@@ -40,10 +40,10 @@ public class RaspberryPiController {
 //        System.out.println("deviceId = " + deviceId);
         String sentence = piSentence.getSentence();
 //        System.out.println("sentence = " + sentence);
-        if ("".equals(sentence))
-            return new Status("ERROR", "语句内容为空", "");
         if (deviceId == null)
-            return new Status("ERROR", "设备id为空", "");
+            return new Status("ERROR", "设备id为空", null);
+        if (sentence==null||"".equals(sentence))
+            return new Status("ERROR", "语句内容为空", null);
         Device deviceInfoById = deviceService.getById(deviceId);
         if (deviceInfoById==null)
             return new Status("ERROR", "插入数据库失败，无此设备", null);
