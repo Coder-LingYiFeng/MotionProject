@@ -21,7 +21,7 @@ public class LoginController {
     public Status register(@RequestBody User user) {
         String userName = user.getUserName();
         String passWord = user.getPassWord();
-        if ("".equals(userName) || "".equals(passWord))
+        if ("".equals(userName) || "".equals(passWord) || userName == null || passWord == null)
             return new Status("ERROR", "用户名或密码为空", null);
 
         User userInfo = userService.getUserByUserName(userName);
