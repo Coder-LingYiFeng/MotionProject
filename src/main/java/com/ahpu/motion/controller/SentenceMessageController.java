@@ -33,7 +33,7 @@ public class SentenceMessageController {
         if (name == null || "".equals(name))
             return new Status("ERROR", "设备名为空", null);
         if (createUserId == null)
-            return new Status("ERROR", "设备ID为空", null);
+            return new Status("ERROR", "参数createUserId为空", null);
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
         if (deviceInfo == null)
             return new Status("ERROR", "设备不存在", null);
@@ -49,7 +49,7 @@ public class SentenceMessageController {
         if (name == null || "".equals(name))
             return new Status("ERROR", "设备名为空", null);
         if (createUserId == null)
-            return new Status("ERROR", "设备ID为空", null);
+            return new Status("ERROR", "参数createUsrId为空", null);
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
         if (deviceInfo == null)
             return new Status("ERROR", "设备不存在", null);
