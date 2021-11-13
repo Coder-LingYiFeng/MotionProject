@@ -79,9 +79,9 @@ public class DeviceController {
     }
 
     @GetMapping("/getAllDevice")
-    public Status getAllDevice(@RequestParam Integer createUserId){
-//        public Status getAllDevice(@RequestBody User user){
-//        Integer id = user.getId();
+    public Status getAllDevice(@RequestParam(defaultValue = "0") Integer createUserId){
+        if (createUserId==0)
+            return new Status("ERROR","createUserId参数未传",null);
         User userInfo = userService.getById(createUserId);
         if (userInfo==null)
             return new Status("ERROR","用户不存在",null);
