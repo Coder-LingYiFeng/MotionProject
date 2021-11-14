@@ -72,6 +72,7 @@ public class RaspberryPiController {
         sentenceInfoMap.put("confidence",confidence);
         sentenceInfoMap.put("positiveProb",positiveProb);
         sentenceInfoMap.put("negativeProb",negativeProb);
+        sentenceInfoMap.put("type","sentenceInfo");
         pahoUtil.sendMessage(mqttPub,new JSONObject(sentenceInfoMap));
         return new Status("OK", "插入数据库成功", sentenceInfo);
     }
