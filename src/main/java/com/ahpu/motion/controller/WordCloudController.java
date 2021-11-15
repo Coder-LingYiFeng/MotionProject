@@ -84,6 +84,7 @@ public class WordCloudController {
         });
         resMap.put("status","OK");
         resMap.put("message","数据获取成功");
+        resMap.put("sentence",sentenceInfoList);
         System.out.println("resList.size() = " + resList.size());
         if (resList.size()!=0)
             resMap.put("data",resList);
