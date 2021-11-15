@@ -2,13 +2,13 @@
 
 **测试工具：POSTMAN**
 
-[toc] 
+[toc]
 
 ## 1. 用户接口
 
 ### 1.1 登陆
 
-`/userRecord/login	[POST]` 
+`/userRecord/login	[POST]`
 
 **1. 测试用例**
 
@@ -17,32 +17,32 @@
 ```json
 请求：
 {
-    "userName":"hhdddh",
-    "passWord":"123"
+"userName":"hhdddh",
+"passWord":"123"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "用户名不存在"
+"status": "ERROR",
+"message": "用户名不存在"
 }
 ```
 
 **2. 测试用例**
 
-**测试内容：** *用户名存在但是密码错误* 
+**测试内容：** *用户名存在但是密码错误*
 
 ```json
 请求：
 {
-    "userName":"hhh",
-    "passWord":"1234"
+"userName":"hhh",
+"passWord":"1234"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "密码错误"
+"status": "ERROR",
+"message": "密码错误"
 }
 ```
 
@@ -53,27 +53,27 @@
 ```json
 请求：
 {
-    "userName":"",
-    "passWord":"123"
+"userName":"",
+"passWord":"123"
 }
 
 {
-    "passWord":"123"
+"passWord":"123"
 }
 
 {
-    "userName":"hhh"
+"userName":"hhh"
 }
 
 {
-    "userName":"hhh",
-    "passWord":""
+"userName":"hhh",
+"passWord":""
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "用户名或密码为空"
+"status": "ERROR",
+"message": "用户名或密码为空"
 }
 ```
 
@@ -84,18 +84,18 @@
 ```json
 请求：
 {
-    "userName":"hhh",
-    "passWord":"123"
+"userName":"hhh",
+"passWord":"123"
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "登陆成功",
-    "data": {
-        "id": 40,
-        "userName": "hhh"
-    }
+"status": "OK",
+"message": "登陆成功",
+"data": {
+"id": 40,
+"userName": "hhh"
+}
 }
 ```
 
@@ -110,14 +110,14 @@
 ```json
 请求：
 {
-    "userName":"hhh",
-    "passWord":"123"
+"userName":"hhh",
+"passWord":"123"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "用户名已存在"
+"status": "ERROR",
+"message": "用户名已存在"
 }
 ```
 
@@ -128,27 +128,27 @@
 ```json
 请求：
 {
-    "passWord":"123"
+"passWord":"123"
 }
 
 {
-    "userName":"",
-    "passWord":"123"
+"userName":"",
+"passWord":"123"
 }
 
 {
-    "userName":"hhhgg"
+"userName":"hhhgg"
 }
 
 {
-    "userName":"hhhgg",
-    "passWord":""
+"userName":"hhhgg",
+"passWord":""
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "用户名或密码为空"
+"status": "ERROR",
+"message": "用户名或密码为空"
 }
 ```
 
@@ -159,18 +159,18 @@
 ```json
 请求：
 {
-    "userName":"hhhgg",
-    "passWord":"123"
+"userName":"hhhgg",
+"passWord":"123"
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "注册成功",
-    "data": {
-        "id": 53,
-        "userName": "hhhgg"
-    }
+"status": "OK",
+"message": "注册成功",
+"data": {
+"id": 53,
+"userName": "hhhgg"
+}
 }
 ```
 
@@ -187,16 +187,16 @@
 ```json
 请求：
 {
-    "name":"ceshi",
-    "createUserId":45,
-    "mqttPub":"ceshiPub1",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi",
+"createUserId":45,
+"mqttPub":"ceshiPub1",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备名已存在"
+"status": "ERROR",
+"message": "设备名已存在"
 }
 ```
 
@@ -207,16 +207,16 @@
 ```json
 请求：
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttPub":"ceshiPub1",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"createUserId":45,
+"mqttPub":"ceshiPub1",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "mqttPub已存在"
+"status": "ERROR",
+"message": "mqttPub已存在"
 }
 ```
 
@@ -227,16 +227,16 @@
 ```json
 请求：
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttPub":"ceshiPub2",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"createUserId":45,
+"mqttPub":"ceshiPub2",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "mqttSub已存在"
+"status": "ERROR",
+"message": "mqttSub已存在"
 }
 ```
 
@@ -247,22 +247,22 @@
 ```json
 请求：
 {
-    "name":"",
-    "createUserId":45,
-    "mqttPub":"ceshiPub2",
-    "mqttSub":"ceshiSub1"
+"name":"",
+"createUserId":45,
+"mqttPub":"ceshiPub2",
+"mqttSub":"ceshiSub1"
 }
 
 {
-    "createUserId":45,
-    "mqttPub":"ceshiPub2",
-    "mqttSub":"ceshiSub1"
+"createUserId":45,
+"mqttPub":"ceshiPub2",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备名为空"
+"status": "ERROR",
+"message": "设备名为空"
 }
 ```
 
@@ -273,22 +273,22 @@
 ```json
 请求：
 {
-    "name":"ceshi1",
-    "mqttPub":"ceshiPub",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"mqttPub":"ceshiPub",
+"mqttSub":"ceshiSub1"
 }
 
 {
-    "name":"ceshi1",
-    "createUserId":100000,
-    "mqttPub":"ceshiPub",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"createUserId":100000,
+"mqttPub":"ceshiPub",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备管理者不存在"
+"status": "ERROR",
+"message": "设备管理者不存在"
 }
 ```
 
@@ -299,22 +299,22 @@
 ```json
 请求：
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"createUserId":45,
+"mqttSub":"ceshiSub1"
 }
 
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttPub":"",
-    "mqttSub":"ceshiSub1"
+"name":"ceshi1",
+"createUserId":45,
+"mqttPub":"",
+"mqttSub":"ceshiSub1"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备mqttPub为空"
+"status": "ERROR",
+"message": "设备mqttPub为空"
 }
 ```
 
@@ -325,22 +325,22 @@
 ```JSON
 请求：
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttPub":"ceshiPub1"
+"name":"ceshi1",
+"createUserId":45,
+"mqttPub":"ceshiPub1"
 }
 
 {
-    "name":"ceshi1",
-    "createUserId":45,
-    "mqttPub":"ceshiPub1",
-    "mqttSub":""
+"name":"ceshi1",
+"createUserId":45,
+"mqttPub":"ceshiPub1",
+"mqttSub":""
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备mqttSub为空"
+"status": "ERROR",
+"message": "设备mqttSub为空"
 }
 ```
 
@@ -351,23 +351,23 @@
 ```json
 请求：
 {
-    "name":"ceshi2",
-    "createUserId":45,
-    "mqttPub":"ceshiPub2",
-    "mqttSub":"ceshiSub2"
+"name":"ceshi2",
+"createUserId":45,
+"mqttPub":"ceshiPub2",
+"mqttSub":"ceshiSub2"
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "设备添加成功",
-    "data": {
-        "id": 30,
-        "name": "ceshi2",
-        "createUserId": 45,
-        "mqttSub": "ceshiSub2",
-        "mqttPub": "ceshiPub2"
-    }
+"status": "OK",
+"message": "设备添加成功",
+"data": {
+"id": 30,
+"name": "ceshi2",
+"createUserId": 45,
+"mqttSub": "ceshiSub2",
+"mqttPub": "ceshiPub2"
+}
 }
 ```
 
@@ -382,19 +382,19 @@
 ```json
 请求：
 {
-    "name":"ceshi888",
-    "createUserId":45
+"name":"ceshi888",
+"createUserId":45
 }
 
 {
-    "name":"ceshi",
-    "createUserId":1000
+"name":"ceshi",
+"createUserId":1000
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备不存在"
+"status": "ERROR",
+"message": "设备不存在"
 }
 ```
 
@@ -405,18 +405,18 @@
 ```json
 请求：
 {
-    "createUserId":1000
+"createUserId":1000
 }
 
 {
-    "name":"",
-    "createUserId":1000
+"name":"",
+"createUserId":1000
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备名为空"
+"status": "ERROR",
+"message": "设备名为空"
 }
 ```
 
@@ -427,13 +427,13 @@
 ```json
 请求：
 {
-    "name":"ceshi"
+"name":"ceshi"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备ID为空"
+"status": "ERROR",
+"message": "设备ID为空"
 }
 ```
 
@@ -444,22 +444,22 @@
 ```json
 请求：
 {
-    "name":"ceshi2",
-    "createUserId":45
+"name":"ceshi2",
+"createUserId":45
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "设备移除成功",
-    "data": {
-        "id": 30,
-        "name": "ceshi2",
-        "createUserId": 45,
-        "createDate": "2021-11-13 13:21:46",
-        "mqttSub": "ceshiSub2",
-        "mqttPub": "ceshiPub2"
-    }
+"status": "OK",
+"message": "设备移除成功",
+"data": {
+"id": 30,
+"name": "ceshi2",
+"createUserId": 45,
+"createDate": "2021-11-13 13:21:46",
+"mqttSub": "ceshiSub2",
+"mqttPub": "ceshiPub2"
+}
 }
 ```
 
@@ -478,8 +478,8 @@ value: 1000
 
 结果：
 {
-    "status": "ERROR",
-    "message": "用户不存在"
+"status": "ERROR",
+"message": "用户不存在"
 }
 ```
 
@@ -494,8 +494,8 @@ value:
 
 结果：
 {
-    "status": "ERROR",
-    "message": "createUserId参数未传"
+"status": "ERROR",
+"message": "createUserId参数未传"
 }
 ```
 
@@ -512,17 +512,17 @@ value:
 ```json
 请求：
 {
-    "createUserId":29,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":29,
+"name":"三号",
+"startTime":"2021-11-09 14:11:00",
+"endTime":"2021-11-09 14:11:59"
 }
 
 
 结果：
 {
-    "message": "无此设备",
-    "status": "ERROR"
+"message": "无此设备",
+"status": "ERROR"
 }
 ```
 
@@ -533,23 +533,23 @@ value:
 ```json
 请求：
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:50",
-    "endTime":"2021-11-09 14:11:51"
+"createUserId":25,
+"name":"三号",
+"startTime":"2021-11-09 14:11:50",
+"endTime":"2021-11-09 14:11:51"
 }
 
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:50",
-    "endTime":"2021-11-09 12:11:51"
+"createUserId":25,
+"name":"三号",
+"startTime":"2021-11-09 14:11:50",
+"endTime":"2021-11-09 12:11:51"
 }
 
 结果：
 {
-    "message": "无数据，请调大时间差,并检查是否存在该设备相关语句信息",
-    "status": "ERROR"
+"message": "无数据，请调大时间差,并检查是否存在该设备相关语句信息",
+"status": "ERROR"
 }
 ```
 
@@ -560,15 +560,15 @@ value:
 ```json
 请求：
 {
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":"2021-11-09 14:11:59"
+"name":"三号",
+"startTime":"2021-11-09 14:11:00",
+"endTime":"2021-11-09 14:11:59"
 }
 
 结果：
 {
-    "message": "createUserId为空",
-    "status": "ERROR"
+"message": "createUserId为空",
+"status": "ERROR"
 }
 ```
 
@@ -579,22 +579,22 @@ value:
 ```json
 请求：
 {
-    "createUserId":25,
-    "name":"",
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":25,
+"name":"",
+"startTime":"2021-11-09 14:11:00",
+"endTime":"2021-11-09 14:11:59"
 }
 
 {
-    "createUserId":25,
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":25,
+"startTime":"2021-11-09 14:11:00",
+"endTime":"2021-11-09 14:11:59"
 }
 
 结果：
 {
-    "message": "设备名为空",
-    "status": "ERROR"
+"message": "设备名为空",
+"status": "ERROR"
 }
 ```
 
@@ -605,22 +605,22 @@ value:
 ```json
 测试：
 {
-    "createUserId":25,
-    "name":"三号",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":25,
+"name":"三号",
+"endTime":"2021-11-09 14:11:59"
 }
 
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":25,
+"name":"三号",
+"startTime":"",
+"endTime":"2021-11-09 14:11:59"
 }
 
 结果：
 {
-    "message": "查询开始时间为空",
-    "status": "ERROR"
+"message": "查询开始时间为空",
+"status": "ERROR"
 }
 ```
 
@@ -631,22 +631,22 @@ value:
 ```json
 测试：
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:00"
+"createUserId":25,
+"name":"三号",
+"startTime":"2021-11-09 14:11:00"
 }
 
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":""
+"createUserId":25,
+"name":"三号",
+"startTime":"2021-11-09 14:11:00",
+"endTime":""
 }
 
 结果：
 {
-    "message": "查询结束时间为空",
-    "status": "ERROR"
+"message": "查询结束时间为空",
+"status": "ERROR"
 }
 ```
 
@@ -657,34 +657,50 @@ value:
 ```json
 请求：
 {
-    "createUserId":25,
-    "name":"三号",
-    "startTime":"2021-11-09 14:11:00",
-    "endTime":"2021-11-09 14:11:59"
+"createUserId":47,
+"name":"五号设备",
+"startTime":"2021-11-11 19:27:48",
+"endTime":"2021-11-11 20:11:16"
 }
 
 结果：
 {
-    "data": [
-        {
-            "name": "但是",
-            "value": "1"
-        },
-        {
-            "name": "地上",
-            "value": "1"
-        },
-        {
-            "name": "冰淇淋",
-            "value": "1"
-        },
-        {
-            "name": "难受",
-            "value": "1"
-        }
-    ],
-    "message": "数据获取成功",
-    "status": "OK"
+"sentence": [
+{
+"id": 38,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-11 20:11:16",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+}
+],
+"data": [
+{
+"name": "通信",
+"value": "1"
+},
+{
+"name": "test1111",
+"value": "1"
+},
+{
+"name": "测试",
+"value": "1"
+},
+{
+"name": "mqtt",
+"value": "1"
+},
+{
+"name": "行为",
+"value": "1"
+}
+],
+"message": "数据获取成功",
+"status": "OK"
 }
 ```
 
@@ -699,14 +715,14 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备",
-    "createUserId":48
+"name":"五号设备",
+"createUserId":48
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备不存在"
+"status": "ERROR",
+"message": "设备不存在"
 }
 ```
 
@@ -717,18 +733,18 @@ value:
 ```json
 请求：
 {
-    "name":"",
-    "createUserId":48
+"name":"",
+"createUserId":48
 }
 
 {
-    "createUserId":48
+"createUserId":48
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备名为空"
+"status": "ERROR",
+"message": "设备名为空"
 }
 ```
 
@@ -739,13 +755,13 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备"
+"name":"五号设备"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "参数createUserID为空"
+"status": "ERROR",
+"message": "参数createUserID为空"
 }
 ```
 
@@ -756,56 +772,56 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备",
-    "createUserId":47
+"name":"五号设备",
+"createUserId":47
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "数据查询成功",
-    "data": [
-        {
-            "id": 64,
-            "deviceId": 8,
-            "sentence": "测试mqtt的通信行为test11",
-            "time": "2021-11-12 11:00:59",
-            "sentiment": 2,
-            "confidence": 0.394824,
-            "positiveProb": 0.727671,
-            "negativeProb": 0.272329
-        },
-        {
-            "id": 65,
-            "deviceId": 8,
-            "sentence": "测试mqtt的通信行为test11",
-            "time": "2021-11-12 15:02:24",
-            "sentiment": 2,
-            "confidence": 0.394824,
-            "positiveProb": 0.727671,
-            "negativeProb": 0.272329
-        },
-        {
-            "id": 66,
-            "deviceId": 8,
-            "sentence": "测试mqtt的通信行为test11",
-            "time": "2021-11-12 15:03:29",
-            "sentiment": 2,
-            "confidence": 0.394824,
-            "positiveProb": 0.727671,
-            "negativeProb": 0.272329
-        },
-        {
-            "id": 67,
-            "deviceId": 8,
-            "sentence": "好开心",
-            "time": "2021-11-12 15:04:04",
-            "sentiment": 2,
-            "confidence": 0.999896,
-            "positiveProb": 0.999953,
-            "negativeProb": 4.68791E-5
-        }
-    ]
+"status": "OK",
+"message": "数据查询成功",
+"data": [
+{
+"id": 64,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 11:00:59",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 65,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 15:02:24",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 66,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 15:03:29",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 67,
+"deviceId": 8,
+"sentence": "好开心",
+"time": "2021-11-12 15:04:04",
+"sentiment": 2,
+"confidence": 0.999896,
+"positiveProb": 0.999953,
+"negativeProb": 4.68791E-5
+}
+]
 }
 ```
 
@@ -820,14 +836,14 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备",
-    "createUserId":49
+"name":"五号设备",
+"createUserId":49
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备不存在"
+"status": "ERROR",
+"message": "设备不存在"
 }
 ```
 
@@ -838,18 +854,18 @@ value:
 ```json
 请求：
 {
-    "name":"",
-    "createUserId":49
+"name":"",
+"createUserId":49
 }
 
 {
-    "createUserId":49
+"createUserId":49
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备名为空"
+"status": "ERROR",
+"message": "设备名为空"
 }
 ```
 
@@ -860,13 +876,13 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备"
+"name":"五号设备"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "参数createUserId为空"
+"status": "ERROR",
+"message": "参数createUserId为空"
 }
 ```
 
@@ -877,242 +893,242 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备",
-    "createUserId":47
+"name":"五号设备",
+"createUserId":47
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "最新24小时内的单位时间信息量",
-    "data": {
-        "AllSentenceOneDay": [
-            {
-                "id": 65,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test11",
-                "time": "2021-11-12 15:02:24",
-                "sentiment": 2,
-                "confidence": 0.394824,
-                "positiveProb": 0.727671,
-                "negativeProb": 0.272329
-            },
-            {
-                "id": 66,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test11",
-                "time": "2021-11-12 15:03:29",
-                "sentiment": 2,
-                "confidence": 0.394824,
-                "positiveProb": 0.727671,
-                "negativeProb": 0.272329
-            },
-            {
-                "id": 67,
-                "deviceId": 8,
-                "sentence": "好开心",
-                "time": "2021-11-12 15:04:04",
-                "sentiment": 2,
-                "confidence": 0.999896,
-                "positiveProb": 0.999953,
-                "negativeProb": 4.68791E-5
-            },
-            {
-                "id": 68,
-                "deviceId": 8,
-                "sentence": "好难受",
-                "time": "2021-11-12 15:04:22",
-                "sentiment": 0,
-                "confidence": 0.959881,
-                "positiveProb": 0.0180537,
-                "negativeProb": 0.981946
-            },
-            {
-                "id": 69,
-                "deviceId": 8,
-                "sentence": "好难受",
-                "time": "2021-11-12 15:04:55",
-                "sentiment": 0,
-                "confidence": 0.959881,
-                "positiveProb": 0.0180537,
-                "negativeProb": 0.981946
-            },
-            {
-                "id": 70,
-                "deviceId": 8,
-                "sentence": "好难受",
-                "time": "2021-11-12 15:05:08",
-                "sentiment": 0,
-                "confidence": 0.959881,
-                "positiveProb": 0.0180537,
-                "negativeProb": 0.981946
-            },
-            {
-                "id": 75,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test11",
-                "time": "2021-11-12 19:48:16",
-                "sentiment": 2,
-                "confidence": 0.394824,
-                "positiveProb": 0.727671,
-                "negativeProb": 0.272329
-            },
-            {
-                "id": 76,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test11",
-                "time": "2021-11-12 19:48:57",
-                "sentiment": 2,
-                "confidence": 0.394824,
-                "positiveProb": 0.727671,
-                "negativeProb": 0.272329
-            },
-            {
-                "id": 77,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-12 19:49:07",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 78,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-12 19:50:00",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 79,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-12 23:27:02",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 80,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-12 23:39:34",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 81,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-13 02:20:23",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 82,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-13 02:32:20",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            },
-            {
-                "id": 83,
-                "deviceId": 8,
-                "sentence": "测试mqtt的通信行为test1111",
-                "time": "2021-11-13 02:49:10",
-                "sentiment": 2,
-                "confidence": 0.581671,
-                "positiveProb": 0.811752,
-                "negativeProb": 0.188248
-            }
-        ],
-        "echatsData": [
-            {
-                "2021-11-12 13:55:47": 0
-            },
-            {
-                "2021-11-12 14:55:47": 6
-            },
-            {
-                "2021-11-12 15:55:47": 0
-            },
-            {
-                "2021-11-12 16:55:47": 0
-            },
-            {
-                "2021-11-12 17:55:47": 0
-            },
-            {
-                "2021-11-12 18:55:47": 4
-            },
-            {
-                "2021-11-12 19:55:47": 0
-            },
-            {
-                "2021-11-12 20:55:47": 0
-            },
-            {
-                "2021-11-12 21:55:47": 0
-            },
-            {
-                "2021-11-12 22:55:47": 2
-            },
-            {
-                "2021-11-12 23:55:47": 0
-            },
-            {
-                "2021-11-13 00:55:47": 0
-            },
-            {
-                "2021-11-13 01:55:47": 3
-            },
-            {
-                "2021-11-13 02:55:47": 0
-            },
-            {
-                "2021-11-13 03:55:47": 0
-            },
-            {
-                "2021-11-13 04:55:47": 0
-            },
-            {
-                "2021-11-13 05:55:47": 0
-            },
-            {
-                "2021-11-13 06:55:47": 0
-            },
-            {
-                "2021-11-13 07:55:47": 0
-            },
-            {
-                "2021-11-13 08:55:47": 0
-            },
-            {
-                "2021-11-13 09:55:47": 0
-            },
-            {
-                "2021-11-13 10:55:47": 0
-            },
-            {
-                "2021-11-13 11:55:47": 0
-            },
-            {
-                "2021-11-13 12:55:47": 0
-            }
-        ]
-    }
+"status": "OK",
+"message": "最新24小时内的单位时间信息量",
+"data": {
+"AllSentenceOneDay": [
+{
+"id": 65,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 15:02:24",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 66,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 15:03:29",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 67,
+"deviceId": 8,
+"sentence": "好开心",
+"time": "2021-11-12 15:04:04",
+"sentiment": 2,
+"confidence": 0.999896,
+"positiveProb": 0.999953,
+"negativeProb": 4.68791E-5
+},
+{
+"id": 68,
+"deviceId": 8,
+"sentence": "好难受",
+"time": "2021-11-12 15:04:22",
+"sentiment": 0,
+"confidence": 0.959881,
+"positiveProb": 0.0180537,
+"negativeProb": 0.981946
+},
+{
+"id": 69,
+"deviceId": 8,
+"sentence": "好难受",
+"time": "2021-11-12 15:04:55",
+"sentiment": 0,
+"confidence": 0.959881,
+"positiveProb": 0.0180537,
+"negativeProb": 0.981946
+},
+{
+"id": 70,
+"deviceId": 8,
+"sentence": "好难受",
+"time": "2021-11-12 15:05:08",
+"sentiment": 0,
+"confidence": 0.959881,
+"positiveProb": 0.0180537,
+"negativeProb": 0.981946
+},
+{
+"id": 75,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 19:48:16",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 76,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test11",
+"time": "2021-11-12 19:48:57",
+"sentiment": 2,
+"confidence": 0.394824,
+"positiveProb": 0.727671,
+"negativeProb": 0.272329
+},
+{
+"id": 77,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-12 19:49:07",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 78,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-12 19:50:00",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 79,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-12 23:27:02",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 80,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-12 23:39:34",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 81,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-13 02:20:23",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 82,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-13 02:32:20",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+},
+{
+"id": 83,
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"time": "2021-11-13 02:49:10",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+}
+],
+"echatsData": [
+{
+"2021-11-12 13:55:47": 0
+},
+{
+"2021-11-12 14:55:47": 6
+},
+{
+"2021-11-12 15:55:47": 0
+},
+{
+"2021-11-12 16:55:47": 0
+},
+{
+"2021-11-12 17:55:47": 0
+},
+{
+"2021-11-12 18:55:47": 4
+},
+{
+"2021-11-12 19:55:47": 0
+},
+{
+"2021-11-12 20:55:47": 0
+},
+{
+"2021-11-12 21:55:47": 0
+},
+{
+"2021-11-12 22:55:47": 2
+},
+{
+"2021-11-12 23:55:47": 0
+},
+{
+"2021-11-13 00:55:47": 0
+},
+{
+"2021-11-13 01:55:47": 3
+},
+{
+"2021-11-13 02:55:47": 0
+},
+{
+"2021-11-13 03:55:47": 0
+},
+{
+"2021-11-13 04:55:47": 0
+},
+{
+"2021-11-13 05:55:47": 0
+},
+{
+"2021-11-13 06:55:47": 0
+},
+{
+"2021-11-13 07:55:47": 0
+},
+{
+"2021-11-13 08:55:47": 0
+},
+{
+"2021-11-13 09:55:47": 0
+},
+{
+"2021-11-13 10:55:47": 0
+},
+{
+"2021-11-13 11:55:47": 0
+},
+{
+"2021-11-13 12:55:47": 0
+}
+]
+}
 }
 ```
 
@@ -1127,17 +1143,17 @@ value:
 ```json
 请求：
 {
-    "createUserId":40,
-    "name":"五号设备",
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":40,
+"name":"五号设备",
+"startTime":"2021-11-10 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 
 结果：
 {
-    "message": "无此设备",
-    "status": "ERROR"
+"message": "无此设备",
+"status": "ERROR"
 }
 ```
 
@@ -1148,15 +1164,15 @@ value:
 ```json
 请求：
 {
-    "name":"五号设备",
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"name":"五号设备",
+"startTime":"2021-11-10 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 结果：
 {
-    "message": "createUserId为空",
-    "status": "ERROR"
+"message": "createUserId为空",
+"status": "ERROR"
 }
 ```
 
@@ -1167,22 +1183,22 @@ value:
 ```json
 请求：
 {
-    "createUserId":40,
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":40,
+"startTime":"2021-11-10 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 {
-    "createUserId":40,
-    "name":"",
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":40,
+"name":"",
+"startTime":"2021-11-10 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 结果：
 {
-    "message": "设备名为空",
-    "status": "ERROR"
+"message": "设备名为空",
+"status": "ERROR"
 }
 ```
 
@@ -1193,22 +1209,22 @@ value:
 ```json
 请求：
 {
-    "createUserId":40,
-    "name":"五号设备",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":40,
+"name":"五号设备",
+"endTime":"2021-11-11 10:56:19"
 }
 
 {
-    "createUserId":40,
-    "name":"五号设备",
-    "startTime":"",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":40,
+"name":"五号设备",
+"startTime":"",
+"endTime":"2021-11-11 10:56:19"
 }
 
 结果：
 {
-    "message": "查询开始时间为空",
-    "status": "ERROR"
+"message": "查询开始时间为空",
+"status": "ERROR"
 }
 ```
 
@@ -1219,22 +1235,22 @@ value:
 ```json
 请求：
 {
-    "createUserId":40,
-    "name":"五号设备",
-    "startTime":"2021-11-10 19:12:49"
+"createUserId":40,
+"name":"五号设备",
+"startTime":"2021-11-10 19:12:49"
 }
 
 {
-    "createUserId":40,
-    "name":"五号设备",
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":""
+"createUserId":40,
+"name":"五号设备",
+"startTime":"2021-11-10 19:12:49",
+"endTime":""
 }
 
 结果：
 {
-    "message": "查询结束时间为空",
-    "status": "ERROR"
+"message": "查询结束时间为空",
+"status": "ERROR"
 }
 ```
 
@@ -1245,23 +1261,23 @@ value:
 ```json
 请求：
 {
-    "createUserId":47,
-    "name":"五号设备",
-    "startTime":"2021-11-11 19:12:49",
-    "endTime":"2021-11-11 19:12:59"
+"createUserId":47,
+"name":"五号设备",
+"startTime":"2021-11-11 19:12:49",
+"endTime":"2021-11-11 19:12:59"
 }
 
 {
-    "createUserId":47,
-    "name":"五号设备",
-    "startTime":"2021-11-11 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":47,
+"name":"五号设备",
+"startTime":"2021-11-11 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 结果：
 {
-    "message": "无数据，请调大时间差",
-    "status": "ERROR"
+"message": "无数据，请调大时间差",
+"status": "ERROR"
 }
 ```
 
@@ -1272,26 +1288,26 @@ value:
 ```json
 请求：
 {
-    "createUserId":47,
-    "name":"五号设备",
-    "startTime":"2021-11-10 19:12:49",
-    "endTime":"2021-11-11 10:56:19"
+"createUserId":47,
+"name":"五号设备",
+"startTime":"2021-11-10 19:12:49",
+"endTime":"2021-11-11 10:56:19"
 }
 
 结果：
 {
-    "data": [
-        {
-            "name": "负向",
-            "value": "4"
-        },
-        {
-            "name": "正向",
-            "value": "17"
-        }
-    ],
-    "message": "数据获取成功",
-    "status": "OK"
+"data": [
+{
+"name": "负向",
+"value": "4"
+},
+{
+"name": "正向",
+"value": "17"
+}
+],
+"message": "数据获取成功",
+"status": "OK"
 }
 ```
 
@@ -1308,15 +1324,15 @@ value:
 ```json
 请求：
 {
-    "deviceId":1000,
-    "sentence":"测试mqtt的通信行为test1111"
+"deviceId":1000,
+"sentence":"测试mqtt的通信行为test1111"
 
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "插入数据库失败，无此设备"
+"status": "ERROR",
+"message": "插入数据库失败，无此设备"
 }
 ```
 
@@ -1327,13 +1343,13 @@ value:
 ```json
 请求：
 {
-    "sentence":"测试mqtt的通信行为test1111"
+"sentence":"测试mqtt的通信行为test1111"
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "设备id为空"
+"status": "ERROR",
+"message": "设备id为空"
 }
 ```
 
@@ -1344,18 +1360,18 @@ value:
 ```json
 请求：
 {
-    "deviceId":8
+"deviceId":8
 }
 
 {
-    "deviceId":8,
-    "sentence":""
+"deviceId":8,
+"sentence":""
 }
 
 结果：
 {
-    "status": "ERROR",
-    "message": "语句内容为空"
+"status": "ERROR",
+"message": "语句内容为空"
 }
 ```
 
@@ -1366,22 +1382,22 @@ value:
 ```json
 请求：
 {
-    "deviceId":8,
-    "sentence":"测试mqtt的通信行为test1111"
+"deviceId":8,
+"sentence":"测试mqtt的通信行为test1111"
 }
 
 结果：
 {
-    "status": "OK",
-    "message": "插入数据库成功",
-    "data": {
-        "deviceId": 8,
-        "sentence": "测试mqtt的通信行为test1111",
-        "sentiment": 2,
-        "confidence": 0.581671,
-        "positiveProb": 0.811752,
-        "negativeProb": 0.188248
-    }
+"status": "OK",
+"message": "插入数据库成功",
+"data": {
+"deviceId": 8,
+"sentence": "测试mqtt的通信行为test1111",
+"sentiment": 2,
+"confidence": 0.581671,
+"positiveProb": 0.811752,
+"negativeProb": 0.188248
+}
 }
 ```
 

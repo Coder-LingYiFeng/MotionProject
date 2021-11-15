@@ -345,34 +345,57 @@
 
 **返回说明：**
 
-| 字段名  | 字段类型  | 是否一定存在 | 字段说明              |
-| ------- | --------- | ------------ | --------------------- |
-| status  | String    | 是           | 成功：OK，失败：ERROR |
-| message | String    | 是           | 提示信息              |
-| data    | JSON/null | 否           | 成功才有              |
-| +name   | String    | 是           | 词语                  |
-| +value  | String    | 是           | 词频                  |
+| 字段名      | 字段类型  | 是否一定存在 | 字段说明                                     |
+| ----------- | --------- | ------------ | -------------------------------------------- |
+| status      | String    | 是           | 成功：OK，失败：ERROR                        |
+| message     | String    | 是           | 提示信息                                     |
+| data        | JSON/null | 否           | 成功才有                                     |
+| +name       | String    | 是           | 词语                                         |
+| +value      | String    | 是           | 词频                                         |
+| sentence    | JSON      | 是           | 所有语句信息                                 |
+| +id         | int       | 是           | sentence表自增id                             |
+| +deviceId   | int       | 是           | 该语句的所属的设备id                         |
+| +sentence   | String    | 是           | 语句信息                                     |
+| +time       | String    | 是           | 语句存库的时间                               |
+| +sentiment  | int       | 是           | 表示情感极性分类结果, 0:负向，1:中性，2:正向 |
+| +confidence | double    | 是           | 表示分类的置信度                             |
 
 **返回示例：**
 
 ```json
 查询成功
 {
+    "sentence": [
+        {
+            "id": 38,
+            "deviceId": 8,
+            "sentence": "测试mqtt的通信行为test1111",
+            "time": "2021-11-11 20:11:16",
+            "sentiment": 2,
+            "confidence": 0.581671,
+            "positiveProb": 0.811752,
+            "negativeProb": 0.188248
+        }
+    ],
     "data": [
         {
-            "name": "但是",
+            "name": "通信",
             "value": "1"
         },
         {
-            "name": "地上",
+            "name": "test1111",
             "value": "1"
         },
         {
-            "name": "冰淇淋",
+            "name": "测试",
             "value": "1"
         },
         {
-            "name": "难受",
+            "name": "mqtt",
+            "value": "1"
+        },
+        {
+            "name": "行为",
             "value": "1"
         }
     ],
@@ -818,8 +841,8 @@
 
 ```json
 {
-  "deviceId":8,
-  "sentence":"测试mqtt的通信行为test1111"
+    "deviceId":8,
+    "sentence":"测试mqtt的通信行为test1111"
 }
 ```
 
