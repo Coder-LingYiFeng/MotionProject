@@ -78,6 +78,34 @@ public class DeviceController {
         return new Status("OK","设备移除成功",deviceInfo);
     }
 
+    @PostMapping("/updateDevice")
+    public Status updateDevice(@RequestBody Device device){
+        Integer id = device.getId();
+        if (id == null)
+            new Status("ERROR","参数id为空",null);
+        String name = device.getName();
+        if (name==null||"".equals(name))
+            new Status("ERROR","参数name为空",null);
+        Integer createUserId = device.getCreateUserId();
+        if (createUserId == null)
+            new Status("ERROR","参数createUserId为空",null);
+        String scribe = device.getScribe();
+        if (scribe==null||"".equals(scribe))
+            new Status("ERROR","参数scribe为空",null);
+        String mqttSub = device.getMqttSub();
+        if (mqttSub==null||"".equals(mqttSub))
+            new Status("ERROR","参数mqttSub为空",null);
+        String mqttPub = device.getMqttPub();
+        if (mqttPub==null||"".equals(mqttPub))
+            new Status("ERROR","参数mqttPub为空",null);
+        try {
+            deviceService.updateDeviceById(id,name,createUserId,scribe,mqttSub,mqttPub);
+            return new Status("OK","设备信息更新成功",device);
+        }catch (Exception e){
+            return new Status("ERROR","服务器错误",null);
+        }
+    }
+
     @GetMapping("/getAllDevice")
     public Status getAllDevice(@RequestParam(defaultValue = "0") Integer createUserId){
         if (createUserId==0)
