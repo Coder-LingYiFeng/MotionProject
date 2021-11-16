@@ -30,6 +30,12 @@ public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> impleme
     }
 
     @Override
+    public boolean updateDeviceById(Integer id, String name, Integer createUserId, String scribe, String mqttSub, String mqttPub) {
+        return deviceMapper.updateDeviceById(id,name,createUserId,scribe,mqttSub,mqttPub);
+    }
+
+
+    @Override
     public List<Device> getAllByCreateUserId(Integer createUserId) {
         return deviceMapper.getAllByCreateUserId(createUserId);
     }

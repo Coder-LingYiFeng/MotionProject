@@ -15,6 +15,8 @@ public interface DeviceService extends IService<Device> {
 
     boolean deleteByNameAndId(String name,Integer createUserId);
 
+    boolean updateDeviceById(Integer id,String name,Integer createUserId,String scribe,String mqttSub,String mqttPub);
+
     List<Device> getAllByCreateUserId(Integer createUserId);
 
     List<Device> getAllDeviceInfo();

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ public interface DeviceMapper extends BaseMapper<Device> {
 
     @Delete("delete from device where create_user_id=#{createUserId} and name=#{name}")
     boolean deleteByNameAndId(String name,Integer createUserId);
+
+    @Update("update device set name=#{name},create_user_id=#{createUserId},scribe=#{scribe},mqtt_sub=#{mqttSub},mqtt_pub=#{mqttPub} WHERE id=#{id}")
+    boolean updateDeviceById(Integer id,String name,Integer createUserId,String scribe,String mqttSub,String mqttPub);
 
     @Select("select * from device where create_user_id=#{createUserId}")
     List<Device> getAllByCreateUserId(Integer createUserId);
