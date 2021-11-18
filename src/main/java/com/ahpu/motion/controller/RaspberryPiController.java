@@ -1,8 +1,10 @@
 package com.ahpu.motion.controller;
 
 import com.ahpu.motion.bean.Device;
+import com.ahpu.motion.bean.DeviceGps;
 import com.ahpu.motion.bean.Sentence;
 import com.ahpu.motion.bean.Status;
+import com.ahpu.motion.service.DeviceGpsService;
 import com.ahpu.motion.service.DeviceService;
 import com.ahpu.motion.service.SentenceService;
 import com.ahpu.motion.utils.MotionUtil;
@@ -33,6 +35,9 @@ public class RaspberryPiController {
 
     @Autowired
     PahoUtil pahoUtil;
+
+    @Autowired
+    DeviceGpsService deviceGpsService;
 
     @PostMapping("/insertSentence")
     public Status insertSentence(@RequestBody Sentence piSentence) {
@@ -75,6 +80,26 @@ public class RaspberryPiController {
         sentenceInfoMap.put("type","sentenceInfo");
         pahoUtil.sendMessage(mqttPub,new JSONObject(sentenceInfoMap));
         return new Status("OK", "插入数据库成功", sentenceInfo);
+    }
+
+    @PostMapping("/insertGps")
+    public Status insertGps(@RequestBody DeviceGps deviceGps){
+        Integer deviceId = deviceGps.getDeviceId();
+        Float latitude = deviceGps.getLatitude();
+        Float longitude = deviceGps.getLongitude();
+        if (deviceId == null)
+            return new Status("ERROR","deviceId为空",null);
+        if (latitude == null)
+            return new Status("ERROR","latitude为空",null);
+        if (longitude==null)
+            return new Status("ERROR","longitude为空",null);
+        try {
+            deviceGpsService.insertDeviceGps(deviceId,latitude,longitude);
+        }catch (Exception e){
+            System.out.println(e);
+            return new Status("ERROR", "插入数据库失败", null);
+        }
+        return new Status("OK","插入成功",deviceGps);
     }
 
 }
