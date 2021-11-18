@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://1.116.67.152:3306/motion
+    url: jdbc:mysql://118.31.116.39:3306/motion
     username: motion
-    password: SbkXHdbkJdLyCrhy
+    password: DcRheHNKadRspFiC
 
     druid:
       aop-patterns: com.ahpu.motion.*  #监控SpringBean
