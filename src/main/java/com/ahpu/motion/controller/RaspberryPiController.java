@@ -85,8 +85,8 @@ public class RaspberryPiController {
     @PostMapping("/insertGps")
     public Status insertGps(@RequestBody DeviceGps deviceGps){
         Integer deviceId = deviceGps.getDeviceId();
-        Float latitude = deviceGps.getLatitude();
-        Float longitude = deviceGps.getLongitude();
+        String latitude = deviceGps.getLatitude();
+        String longitude = deviceGps.getLongitude();
         if (deviceId == null)
             return new Status("ERROR","deviceId为空",null);
         if (latitude == null)

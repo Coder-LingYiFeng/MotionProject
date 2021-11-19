@@ -16,7 +16,7 @@ public class DeviceGpsServiceImpl extends ServiceImpl<DeviceGpsMapper, DeviceGps
     DeviceGpsMapper deviceGpsMapper;
 
     @Override
-    public void insertDeviceGps(Integer deviceId, Float longitude, Float latitude) {
+    public void insertDeviceGps(Integer deviceId, String longitude, String latitude) {
         deviceGpsMapper.insertDeviceGps(deviceId,longitude,latitude);
     }
 

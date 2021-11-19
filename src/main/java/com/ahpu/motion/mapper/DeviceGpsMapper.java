@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface DeviceGpsMapper extends BaseMapper<DeviceGps> {
 
     @Insert("insert into device_gps(device_id, longitude, latitude) values (#{deviceId},#{longitude},#{latitude})")
-    void insertDeviceGps(Integer deviceId,Float longitude,Float latitude);
+    void insertDeviceGps(Integer deviceId,String longitude,String latitude);
 
     @Select("select * from device_gps where device_id=#{deviceId} and date_time>=#{startTime} and date_time<=#{endTime}")
     ArrayList<DeviceGps> selectDeviceGpsBytimeSection(Integer deviceId, String startTime, String endTime);
