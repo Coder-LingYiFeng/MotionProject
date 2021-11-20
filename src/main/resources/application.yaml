@@ -16,6 +16,27 @@ spring:
         login-username: admin
         login-password: admin
         resetEnable: false
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 3401506758@qq.com
+    password: exjviwiegvohcjid
+    port: 465
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+#      spring.mail.properties.mail.smtp.auth=true
+#      spring.mail.properties.mail.smtp.starttls.enable=true
+#      spring.mail.properties.mail.smtp.starttls.required=true
+#      spring.mail.properties.mail.smtp.ssl.enable=true
+
 
 motion:
   api:
