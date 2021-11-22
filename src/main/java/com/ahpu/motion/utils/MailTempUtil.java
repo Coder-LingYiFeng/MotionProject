@@ -8,13 +8,13 @@ public class MailTempUtil {
         return "<html lang=\"en\">\n" +
                 "\t<head>\n" +
                 "\t\t<meta charset=\"UTF-8\">\n" +
-                "\t\t<title>Motion邮件</title>\n" +
+                "\t\t<title>情绪检测系统报警邮件</title>\n" +
                 "\t\t<style type=\"text/css\">\n" +
                 "\t\t</style>\n" +
                 "\t</head>\n" +
                 "\t<body>\n" +
                 "\t\t<div style=\"text-align: center;\">\n" +
-                "\t\t\t<h1 style=\"color: red;\">Motion报警邮件</h1>\n" +
+                "\t\t\t<h1 style=\"color: red;\">情绪检测系统报警邮件</h1>\n" +
                 "\t\t\t<h3>设备名："+deviceName+"</h3>\n" +
                 "\t\t\t<h3>语音总条数："+sentenceNum+"</h3>\n" +
                 "\t\t\t<h3>积极语音条数："+positiveNum+"</h3>\n" +
@@ -33,13 +33,13 @@ public class MailTempUtil {
         return "<html lang=\"en\">\n" +
                 "\t<head>\n" +
                 "\t\t<meta charset=\"UTF-8\">\n" +
-                "\t\t<title>Motion邮件</title>\n" +
+                "\t\t<title>情绪检测系统报警邮件</title>\n" +
                 "\t\t<style type=\"text/css\">\n" +
                 "\t\t</style>\n" +
                 "\t</head>\n" +
                 "\t<body>\n" +
                 "\t\t<div style=\"text-align: center;\">\n" +
-                "\t\t\t<h1 style=\"color: red;\">Motion报警邮件-消极语音条数超过阈值("+negativeMaxNum+")</h1>\n" +
+                "\t\t\t<h1 style=\"color: red;\">情绪检测系统报警邮件-消极语音条数超过阈值("+negativeMaxNum+")</h1>\n" +
                 "\t\t\t<h3>设备名："+deviceName+"</h3>\n" +
                 "\t\t\t<h3>语音总条数："+sentenceNum+"</h3>\n" +
                 "\t\t\t<h3>积极语音条数："+positiveNum+"</h3>\n" +
@@ -58,13 +58,13 @@ public class MailTempUtil {
         return "<html lang=\"en\">\n" +
                 "\t<head>\n" +
                 "\t\t<meta charset=\"UTF-8\">\n" +
-                "\t\t<title>Motion邮件</title>\n" +
+                "\t\t<title>情绪检测系统报警邮件</title>\n" +
                 "\t\t<style type=\"text/css\">\n" +
                 "\t\t</style>\n" +
                 "\t</head>\n" +
                 "\t<body>\n" +
                 "\t\t<div style=\"text-align: center;\">\n" +
-                "\t\t\t<h1 style=\"color: red;\">Motion报警邮件-消极语音占比超过阈值("+negativeMaxPro+")</h1>\n" +
+                "\t\t\t<h1 style=\"color: red;\">情绪检测系统报警邮件-消极语音占比超过阈值("+negativeMaxPro+")</h1>\n" +
                 "\t\t\t<h3>设备名："+deviceName+"</h3>\n" +
                 "\t\t\t<h3>语音总条数："+sentenceNum+"</h3>\n" +
                 "\t\t\t<h3>积极语音条数："+positiveNum+"</h3>\n" +

@@ -1,4 +1,4 @@
-package com.ahpu.motion.config;
+package com.ahpu.motion.properties;
 
 
 import lombok.Data;
@@ -8,9 +8,8 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "motion.api")
-public class MotionAPIConfig {
+public class MotionAPIProperties {
     private String appId;
     private String apiKey;
     private String secretKey;
-
 }

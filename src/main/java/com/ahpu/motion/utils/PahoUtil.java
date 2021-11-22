@@ -1,38 +1,41 @@
 package com.ahpu.motion.utils;
 
-import com.ahpu.motion.bean.Sentence;
 import com.alibaba.fastjson.JSONObject;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class PahoUtil {
-    String broker = "tcp://1.116.67.152:1883";
-    String clientId = "emqx_test";
+    @Value("${mqtt.broker}")
+    String broker;
+    String clientId = "SpringBoot_Motion";
     MemoryPersistence persistence = new MemoryPersistence();
     MqttClient client;
     MqttConnectOptions connOpts = new MqttConnectOptions();
 
-    {
-        try {
-            client = new MqttClient(broker, clientId, persistence);
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void sendMessage(String pubTopic, JSONObject sentenceInfo) {
+        if (client == null) {
+            try {
+                client = new MqttClient(broker, clientId, persistence);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+        }
+//        System.out.println(client);
         int qos = 0;
         try {
             // MQTT 连接选项
 
-            connOpts.setUserName("emqx_test");
-            connOpts.setPassword("emqx_test_password".toCharArray());
+            connOpts.setUserName("SpringBoot_Motion");
+            connOpts.setPassword("SpringBoot_Motion_password".toCharArray());
             // 保留会话
             connOpts.setCleanSession(true);
 

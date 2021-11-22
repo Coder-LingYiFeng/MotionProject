@@ -20,7 +20,7 @@ spring:
     default-encoding: UTF-8
     host: smtp.qq.com
     username: 3401506758@qq.com
-    password: exjviwiegvohcjid
+    password: gsxwqkivmfigciji
     port: 465
     properties:
       mail:
@@ -44,6 +44,8 @@ motion:
     api-key: "CgU3PcsyB4ZGW6jzNX3P68Ij"
     secret-key: "uq1FGSHwRuYA3yRfuwc8YgkglCi5lKW7"
 
+mqtt:
+  broker: tcp://118.31.116.39:1883
 
 #
 #      web-stat-filter: # 监控web
