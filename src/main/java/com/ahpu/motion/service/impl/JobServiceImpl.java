@@ -111,6 +111,43 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public HashMap<String, Object> getJobs() throws SchedulerException {
+        HashMap<String, Object> resMap = new HashMap<>();
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        List<String> triggerGroupNames = scheduler.getTriggerGroupNames();
+        for (String groupName : triggerGroupNames) {
+            //组装group的匹配，为了模糊获取所有的triggerKey或者jobKey
+            GroupMatcher groupMatcher = GroupMatcher.groupEquals(groupName);
+            //获取所有的triggerKey
+            Set<TriggerKey> triggerKeySet = scheduler.getTriggerKeys(groupMatcher);
+            for (TriggerKey triggerKey : triggerKeySet) {
+                Map<String, Object> jobMap = new HashMap<>();
+                CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+                //获取trigger拥有的Job
+                JobKey jobKey = trigger.getJobKey();
+                JobDetailImpl jobDetail = (JobDetailImpl) scheduler.getJobDetail(jobKey);
+                //分组名称
+                jobMap.put("jobGoup", groupName);
+                //定时任务名称
+                jobMap.put("jobName", jobDetail.getName());
+                //cron表达式
+                String cronExpression = trigger.getCronExpression();
+                jobMap.put("corn", cronExpression);
+
+                jobMap.put("deviceId", jobDetail.getJobDataMap().get("deviceId"));
+                jobMap.put("triggrtName", jobDetail.getJobDataMap().get("triggrtName"));
+                jobMap.put("startTime", jobDetail.getJobDataMap().get("startTime"));
+                jobMap.put("endTime", jobDetail.getJobDataMap().get("endTime"));
+
+                jobMap.put("toMail", jobDetail.getJobDataMap().get("toMail"));
+
+                resMap.put(jobDetail.getName(), jobMap);
+            }
+        }
+        return resMap;
+    }
+
+    @Override
     public HashMap<String, Object> getJobInfo(String jobName) throws SchedulerException {
         HashMap<String, Object> resMap = new HashMap<>();
         Map<String, Object> jobMap = new HashMap<>();

@@ -125,14 +125,19 @@ public class JobController{
             resMap.put("status","OK");
             resMap.put("message",jobName+":任务关闭成功！");
             if (!jobMap.isEmpty())
-                resMap.put("jobData",jobMap.get("jobData"));
+                resMap.put("Data",jobMap);
             return new JSONObject(resMap);
         }
         resMap.put("status","ERROR");
         resMap.put("message",jobName+":任务关闭出错！！！");
         if (!jobMap.isEmpty())
-            resMap.put("jobData",jobMap.get("jobData"));
+            resMap.put("Data",jobMap);
         return new JSONObject(resMap);
+    }
+
+    @GetMapping("/getJobs")
+    public JSONObject getJobs() throws SchedulerException {
+        return new JSONObject(jobService.getJobs());
     }
 
     @PostMapping("/addNegativeNumJob")

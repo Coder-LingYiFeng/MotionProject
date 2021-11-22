@@ -11,6 +11,8 @@ public interface JobService {
 
     HashMap<String,Object> jobExists(String jobName) throws SchedulerException;
 
+    HashMap<String,Object> getJobs() throws SchedulerException;
+
     HashMap<String,Object> getJobInfo(String jobName) throws SchedulerException;
 
     boolean deleteJob(String jobName,String jobGroup) throws SchedulerException;

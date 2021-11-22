@@ -94,9 +94,8 @@ public class RaspberryPiController {
         if (longitude==null)
             return new Status("ERROR","longitude为空",null);
         try {
-            deviceGpsService.insertDeviceGps(deviceId,latitude,longitude);
+            deviceGpsService.insertDeviceGps(deviceId,longitude,latitude);
         }catch (Exception e){
-            System.out.println(e);
             return new Status("ERROR", "插入数据库失败", null);
         }
         return new Status("OK","插入成功",deviceGps);
