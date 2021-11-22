@@ -13,9 +13,22 @@ spring:
 
       stat-view-servlet: # 配置监控页功能
         enabled: true
-        login-username: admin
-        login-password: admin
+        login-username: admin   #配置druid监控页面登陆用户名
+        login-password: admin   #配置druid监控页面登陆密码
         resetEnable: false
+      web-stat-filter: # 监控web
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filter:
+        stat: # 对上面filters里面的stat的详细配置
+          slow-sql-millis: 1000
+          logSlowSql: true
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
   mail:
     default-encoding: UTF-8
     host: smtp.qq.com
@@ -46,20 +59,3 @@ motion:
 
 mqtt:
   broker: tcp://118.31.116.39:1883
-
-#
-#      web-stat-filter: # 监控web
-#        enabled: true
-#        urlPattern: /*
-#        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
-#
-#
-#      filter:
-#        stat: # 对上面filters里面的stat的详细配置
-#          slow-sql-millis: 1000
-#          logSlowSql: true
-#          enabled: true
-#        wall:
-#          enabled: true
-#          config:
-#            drop-table-allow: false
