@@ -24,4 +24,9 @@ public class DeviceGpsServiceImpl extends ServiceImpl<DeviceGpsMapper, DeviceGps
     public ArrayList<DeviceGps> selectDeviceGpsBytimeSection(Integer deviceId, String startTime, String endTime) {
         return deviceGpsMapper.selectDeviceGpsBytimeSection(deviceId,startTime,endTime);
     }
+
+    @Override
+    public DeviceGps getLastInfo(Integer deviceId) {
+        return deviceGpsMapper.getLastInfo(deviceId);
+    }
 }

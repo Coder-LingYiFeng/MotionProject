@@ -17,4 +17,7 @@ public interface DeviceGpsMapper extends BaseMapper<DeviceGps> {
     @Select("select * from device_gps where device_id=#{deviceId} and date_time>=#{startTime} and date_time<=#{endTime}")
     ArrayList<DeviceGps> selectDeviceGpsBytimeSection(Integer deviceId, String startTime, String endTime);
 
+    @Select("select * from device_gps WHERE device_id=#{deviceId} order by date_time desc limit 1")
+    DeviceGps getLastInfo(Integer deviceId);
+
 }

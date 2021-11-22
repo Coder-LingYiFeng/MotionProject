@@ -6,14 +6,9 @@ import com.ahpu.motion.bean.Status;
 import com.ahpu.motion.service.DeviceGpsService;
 import com.ahpu.motion.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/dataAPI")
@@ -28,7 +23,6 @@ public class DeviceGpsController {
 
     @PostMapping("/getDeviceGpsByTimeSection")
     public Status getDeviceGpsByTimeSection(@RequestBody Device device) {
-        HashMap<String, Object> resMap = new HashMap<>();
         String startTime = device.getStartTime();
         String endTime = device.getEndTime();
 //        System.out.println(startTime);
@@ -49,22 +43,32 @@ public class DeviceGpsController {
             return new Status("ERROR","查询结束时间为空",null);
 
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
-        ArrayList<Map<String, String>> resList = new ArrayList<>();
         if (deviceInfo == null)
             return new Status("ERROR","无此设备",null);
 
         Integer deviceId = deviceInfo.getId();
-        ArrayList<DeviceGps> deviceGpsInfoList=null;
+        ArrayList<DeviceGps> deviceGpsInfoList;
         try {
             deviceGpsInfoList = deviceGpsService.selectDeviceGpsBytimeSection(deviceId, startTime, endTime);
         }catch (Exception e){
-            System.out.println(e);
             return new Status("ERROR","数据查询失败",null);
         }
         if (deviceGpsInfoList.size()==0)
             return new Status("ERROR","无数据，时间差过小",null);
 
         return new Status("OK","数据获取成功",deviceGpsInfoList);
+
+    }
+
+    @PostMapping("/getLastInfo")
+    public Status getLastInfo(@RequestBody Device device){
+        Integer deviceId = device.getId();
+        if (deviceId == null)
+            return new Status("ERROR","deviceId参数缺失",null);
+        DeviceGps lastInfo = deviceGpsService.getLastInfo(deviceId);
+        if (lastInfo==null)
+            return new Status("ERROR","数据库无相关数据",null);
+        return new Status("OK","数据获取成功",lastInfo);
 
 
     }

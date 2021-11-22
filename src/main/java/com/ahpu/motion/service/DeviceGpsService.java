@@ -10,4 +10,6 @@ public interface DeviceGpsService extends IService<DeviceGps> {
 
     ArrayList<DeviceGps> selectDeviceGpsBytimeSection(Integer deviceId, String startTime, String endTime);
 
+    DeviceGps getLastInfo(Integer deviceId);
+
 }
