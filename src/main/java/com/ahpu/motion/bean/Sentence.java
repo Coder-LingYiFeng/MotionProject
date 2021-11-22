@@ -19,7 +19,7 @@ public class Sentence {
     private Integer id;
     private Integer deviceId;
     private String sentence;
-    private Date time;
+    private Date date;
     private Integer sentiment;
     private Double confidence;
     private Double positiveProb;

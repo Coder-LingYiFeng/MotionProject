@@ -79,7 +79,7 @@ public class SentenceMessageController {
 //            System.out.println("endTime = " + endTime);
 
             for (Sentence sentence : sentencesOnOneDayList) {
-                Date sentenceTime = sentence.getTime();
+                Date sentenceTime = sentence.getDate();
                 if (!(sentenceTime.after(startTime) && sentenceTime.before(endTime)))
                     continue;
                 tempMap.put(startTime, tempMap.get(startTime) + 1);
