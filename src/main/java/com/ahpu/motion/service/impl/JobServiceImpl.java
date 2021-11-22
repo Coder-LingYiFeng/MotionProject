@@ -148,6 +148,13 @@ public class JobServiceImpl implements JobService {
 
                 jobMap.put("toMail", jobDetail.getJobDataMap().get("toMail"));
 
+                Object negativeMaxNum = jobDetail.getJobDataMap().get("negativeMaxNum");
+                Object negativeMaxPro = jobDetail.getJobDataMap().get("negativeMaxPro");
+                if (negativeMaxNum!=null&&jobDetail.getName().contains("Num"))
+                    jobMap.put("negativeMaxNum",negativeMaxNum);
+                if (negativeMaxPro!=null&&jobDetail.getName().contains("Pro"))
+                    jobMap.put("negativeMaxPro",negativeMaxPro);
+
                 resMap.put(jobDetail.getName(), jobMap);
             }
         }
@@ -184,6 +191,13 @@ public class JobServiceImpl implements JobService {
                 jobMap.put("endTime", jobDetail.getJobDataMap().get("endTime"));
 
                 jobMap.put("toMail", jobDetail.getJobDataMap().get("toMail"));
+
+                Object negativeMaxNum = jobDetail.getJobDataMap().get("negativeMaxNum");
+                Object negativeMaxPro = jobDetail.getJobDataMap().get("negativeMaxPro");
+                if (negativeMaxNum!=null&&jobName.contains("Num"))
+                    jobMap.put("negativeMaxNum",negativeMaxNum);
+                if (negativeMaxPro!=null&&jobName.contains("Pro"))
+                    jobMap.put("negativeMaxPro",negativeMaxPro);
 
                 if (jobName.equals(jobDetail.getName())) {
                     resMap.put("jobExists", true);
