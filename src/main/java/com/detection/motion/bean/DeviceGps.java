@@ -15,12 +15,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+//数据库设备GPS信息表实体类
 public class DeviceGps {
+    //自增id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    //关联device.id
     private Integer deviceId;
+    //经度信息
     private String longitude;
+    //纬度信息
     private String latitude;
-    @TableField(exist = false)
+    //插入GPS信息数据的时间
     private Date dateTime;
 }

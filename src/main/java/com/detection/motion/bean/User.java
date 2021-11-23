@@ -14,12 +14,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+//数据库中用户表实体类
 public class User {
+    //自增id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    //用户名
     private String userName;
+    //密码
     private String passWord;
-//    @TableField(exist = false)
+    //创建时间
     private Date createDate;
 
     public User(String userName) {

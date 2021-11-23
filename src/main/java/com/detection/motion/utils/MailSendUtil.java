@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import javax.mail.internet.MimeMessage;
 
 
+/**
+ * 邮件发送工具类
+ */
 @Slf4j
 @Component
 public class MailSendUtil {
@@ -25,6 +28,7 @@ public class MailSendUtil {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom(form);
             helper.setTo(to);
+            //设置标题
             helper.setSubject("情绪检测系统报警邮件");
             helper.setText(content, true);
             mailSender.send(message);

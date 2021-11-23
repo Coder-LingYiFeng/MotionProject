@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
+/**
+ * mqtt通信工具类
+ */
 @Component
 public class PahoUtil {
     @Value("${mqtt.broker}")

@@ -6,9 +6,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 
-
+/**
+ * 情感分析工具类
+ */
 @Component
 public class MotionUtil {
     @Value("${motion.api.app-id}")
@@ -26,6 +27,7 @@ public class MotionUtil {
         client.setConnectionTimeoutInMillis(2000);
         client.setSocketTimeoutInMillis(60000);
 
+        //返回情感分析结果
         return client.sentimentClassify(text, null);
     }
 }

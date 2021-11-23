@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * 实现SentenceService接口，调用SentenceMapper方法实现数据库增删改查
+ */
 @Service
 public class SentenceSeviceImpl extends ServiceImpl<SentenceMapper, Sentence> implements SentenceService {
 

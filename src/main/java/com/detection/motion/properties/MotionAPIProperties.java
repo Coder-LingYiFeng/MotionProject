@@ -5,6 +5,9 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * MotionAPI的配置类
+ */
 @Data
 @Component
 @ConfigurationProperties(prefix = "motion.api")

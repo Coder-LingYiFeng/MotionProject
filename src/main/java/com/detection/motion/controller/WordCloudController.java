@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+
+/**
+ * 词云数据接口
+ */
 @RestController
 @RequestMapping("/dataAPI")
 public class WordCloudController {
@@ -24,9 +28,15 @@ public class WordCloudController {
     StatisticalUtil statisticalUtil;
 
 
+    /**
+     * 获取时间区间内词云信息及语句信息（可二次处理）
+     * @param device 必要参数 startTime endTime createUserId name
+     * @return 返回词云数据及原语句信息（用于二次处理）
+     */
     @PostMapping("/getWordCloudByTimeSection")
     public Map<String,Object> getWordCloud(@RequestBody Device device){
         HashMap<String, Object> resMap = new HashMap<>();
+        //参数获取及校验
         String startTime = device.getStartTime();
         String endTime = device.getEndTime();
 //        System.out.println(startTime);
@@ -55,6 +65,7 @@ public class WordCloudController {
             return resMap;
         }
 
+        //判断设备是否存在
         Device deviceInfo = deviceService.getDeviceByNameAndId(name, createUserId);
         ArrayList<Map<String, String>> resList = new ArrayList<>();
         if(deviceInfo==null){
@@ -62,8 +73,10 @@ public class WordCloudController {
             resMap.put("message","无此设备");
             return resMap;
         }
+        //获取设备id（sentence表关联此id）
         Integer deviceId = deviceInfo.getId();
 //        System.out.println(deviceId);
+        //获取语句信息
         ArrayList<Sentence> sentenceInfoList = sentenceService.selectSentenceBytimeSection(deviceId,startTime,endTime);
 //        sentenceInfoList.forEach(System.out::println);
         if (sentenceInfoList.size()==0){
@@ -71,11 +84,14 @@ public class WordCloudController {
             resMap.put("message","无数据，请调大时间差,并检查是否存在该设备相关语句信息");
             return resMap;
         }
+        //拼接语句信息为字符串
         StringBuilder sb = new StringBuilder();
         sentenceInfoList.forEach(sentenceInfo -> sb.append(sentenceInfo.getSentence()));
         String sentences = sb.toString();
 //        Map<String, Integer> participleRes = participleUtil.getParticipleRes(sentences);
+        //对拼接后的语句信息进行分词及词频统计
         Map<String, Integer> participleRes = statisticalUtil.statisticalWords(participleUtil.getParticipleRes(sentences));
+        //组成标准Echarts词云的数据格式
         participleRes.forEach((k, v) -> {
             HashMap<String, String> tempMap = new HashMap<>();
             tempMap.put("name", k);
@@ -84,6 +100,7 @@ public class WordCloudController {
         });
         resMap.put("status","OK");
         resMap.put("message","数据获取成功");
+        //原始语句信息返回
         resMap.put("sentence",sentenceInfoList);
         System.out.println("resList.size() = " + resList.size());
         if (resList.size()!=0)

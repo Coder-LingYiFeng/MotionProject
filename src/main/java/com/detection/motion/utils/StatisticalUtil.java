@@ -5,9 +5,13 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 统计词频工具类
+ */
 @Component
 public class StatisticalUtil {
     public Map<String, Integer> statisticalWords(String sentence) {
+        //空格切分
         String[] words = sentence.split(" ");
         // 统计词频率
         HashMap<String, Integer> map = new HashMap<>();

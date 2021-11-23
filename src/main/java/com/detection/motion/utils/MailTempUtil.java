@@ -2,6 +2,9 @@ package com.detection.motion.utils;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 邮件模板工具类
+ */
 @Component
 public class MailTempUtil {
     public String getTimingWaringTemp(String negativePro,String neutralPro,String positivePro,String negativeNum,String neutralNum,String positiveNum,String sentenceNum,String deviceName,String startTime,String endTime){

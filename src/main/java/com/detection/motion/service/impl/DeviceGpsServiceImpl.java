@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * 实现DeviceGpsService接口，调用DeviceGpsMapper方法实现数据库增删改查
+ */
 @Service
 public class DeviceGpsServiceImpl extends ServiceImpl<DeviceGpsMapper, DeviceGps> implements DeviceGpsService {
 

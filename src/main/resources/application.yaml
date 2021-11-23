@@ -1,20 +1,20 @@
 server:
-  port: 8000
+  port: 8000  #配置项目启动端口
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://118.31.116.39:3306/motion
-    username: motion
-    password: DcRheHNKadRspFiC
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql8以上
+    url: jdbc:mysql://118.31.116.39:3306/motion #数据库连接地址
+    username: motion  #数据库登陆用户名
+    password: DcRheHNKadRspFiC  #数据库登陆密码
 
     druid:
-      aop-patterns: com.ahpu.motion.*  #监控SpringBean
+      aop-patterns: com.detection.motion.*  #监控SpringBean
       filters: stat,wall     # 底层开启功能，stat（sql监控），wall（防火墙）
 
       stat-view-servlet: # 配置监控页功能
         enabled: true
-        login-username: admin   #配置druid监控页面登陆用户名
-        login-password: admin   #配置druid监控页面登陆密码
+        login-username: admin   #在此处配置监控页面登陆用户名
+        login-password: admin   #在此处配置监控页面登陆密码
         resetEnable: false
       web-stat-filter: # 监控web
         enabled: true
@@ -31,10 +31,10 @@ spring:
             drop-table-allow: false
   mail:
     default-encoding: UTF-8
-    host: smtp.qq.com
-    username: 3401506758@qq.com
-    password: gsxwqkivmfigciji
-    port: 465
+    host: smtp.qq.com   #使用的邮箱服务器
+    username: 3401506758@qq.com   #邮箱账号
+    password: gsxwqkivmfigciji    #开通smtp服务后的授权码
+    port: 465   #ssh走的465端口
     properties:
       mail:
         smtp:
@@ -45,17 +45,11 @@ spring:
             enable: true
             required: true
 
-#      spring.mail.properties.mail.smtp.auth=true
-#      spring.mail.properties.mail.smtp.starttls.enable=true
-#      spring.mail.properties.mail.smtp.starttls.required=true
-#      spring.mail.properties.mail.smtp.ssl.enable=true
-
-
 motion:
   api:
-    app-id: "25098237"
-    api-key: "CgU3PcsyB4ZGW6jzNX3P68Ij"
-    secret-key: "uq1FGSHwRuYA3yRfuwc8YgkglCi5lKW7"
+    app-id: "25098237"    #百度API的app-id
+    api-key: "CgU3PcsyB4ZGW6jzNX3P68Ij"   #百度API的api-key
+    secret-key: "uq1FGSHwRuYA3yRfuwc8YgkglCi5lKW7"    #百度API的secret-key
 
 mqtt:
-  broker: tcp://118.31.116.39:1883
+  broker: tcp://118.31.116.39:1883  #配置mqtt服务器地址

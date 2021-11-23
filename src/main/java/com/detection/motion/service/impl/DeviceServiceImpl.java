@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 实现DeviceService接口，调用DeviceMapper方法实现数据库增删改查
+ */
 @Service
 public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> implements DeviceService {
     @Autowired
