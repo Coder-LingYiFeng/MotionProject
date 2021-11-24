@@ -7,7 +7,7 @@ This repository is Java backend source code only
 ### Software Architecture
 1. Front-end development using VUE  
 2. Hardware made with Raspberry PI  
-3. **Back end using SpringBoot+Mybatis-Plus development**  
+3. **The backend is developed using SpringBoot+Mybatis+Quartz**  
 4. Select mysql as the database
 
 ### Instructions

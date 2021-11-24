@@ -7,7 +7,7 @@
 ### 软件架构
 1. 前端采用vue开发  
 2. 硬件使用树莓派制作  
-3. **后端使用SpringBoot+Mybatis-Plus开发**  
+3. **后端使用SpringBoot+Mybatis+Quartz开发**  
 4. 数据库选用mysql
 ### 使用说明
 1. 克隆本项目到本地后，运行主程序类MotionProjectApplication  
