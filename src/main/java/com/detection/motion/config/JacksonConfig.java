@@ -7,6 +7,9 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.util.TimeZone;
 
+/**
+ * Date类型数据的时区配置及格式化
+ */
 @Configuration
 public class JacksonConfig{
 
