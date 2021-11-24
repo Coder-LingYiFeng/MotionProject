@@ -1,3 +1,5 @@
+
+
 # Motion后端接口详情
 
 [toc]
@@ -43,7 +45,6 @@
 **返回示例:**
 
 ```json
-登陆成功
 {
     "status": "OK",
     "message": "登陆成功",
@@ -51,12 +52,6 @@
         "id": 40,
         "userName": "hhh"
     }
-}
-
-登陆失败
-{
-    "status": "ERROR",
-    "message": "用户名不存在"
 }
 ```
 
@@ -97,7 +92,6 @@
 **返回示例:**
 
 ```json
-注册成功
 {
     "status": "OK",
     "message": "注册成功",
@@ -106,17 +100,11 @@
         "userName": "hhhsshh"
     }
 }
-
-注册失败
-{
-    "status": "ERROR",
-    "message": "用户名已存在"
-}
 ```
 
 ## 2. 设备管理接口
 
-*共有3个接口*
+*共有4个接口*
 
 ### 2.1 新增设备
 
@@ -163,7 +151,6 @@
 **返回示例：**
 
 ```json
-添加成功
 {
     "status": "OK",
     "message": "设备添加成功",
@@ -174,12 +161,6 @@
         "mqttSub": "ceshiSub1",
         "mqttPub": "ceshiPub1"
     }
-}
-
-添加失败
-{
-    "status": "ERROR",
-    "message": "设备名已存在"
 }
 ```
 
@@ -224,7 +205,6 @@
 **返回示例：**
 
 ```json
-删除成功
 {
     "status": "OK",
     "message": "设备移除成功",
@@ -236,12 +216,6 @@
         "mqttSub": "ceshiSub1",
         "mqttPub": "ceshiPub1"
     }
-}
-
-删除失败
-{
-    "status": "ERROR",
-    "message": "设备不存在"
 }
 ```
 
@@ -280,7 +254,6 @@
 **返回示例：**
 
 ```json
-查询成功
 {
     "status": "OK",
     "message": "5个设备信息获取成功",
@@ -303,19 +276,75 @@
         }
     ]
 }
+```
 
-查询失败
+### 2.4 更新设备信息
+
+` /deviceRecord/updateDevice	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 更新设备信息
+
+**请求说明：**
+
+| 参数名称     | 类型   | 必要参数 | 说明                   |
+| ------------ | ------ | -------- | ---------------------- |
+| id           | int    | 是       | 设备的id               |
+| createUserId | String | 是       | 更新的创建设备的用户id |
+| name         | String | 是       | 更新的设备名           |
+| scribe       | String | 是       | 更新的设备描述         |
+| mqttSub      | String | 是       | 更新的mqttSub参数      |
+| mqttPub      | String | 是       | 更新的mqttPub参数      |
+
+**请求示例：**
+
+```json
 {
-    "status": "ERROR",
-    "message": "用户不存在"
+    "id":9,
+    "name":"9号更新",
+    "createUserId":48,
+    "scribe":"测试mapper",
+    "mqttSub":"spring",
+    "mqttPub":"spring"
+}
+```
+
+**返回说明：**
+
+| 字段名        | 字段类型  | 是否一定存在 | 字段说明                                   |
+| ------------- | --------- | ------------ | ------------------------------------------ |
+| status        | String    | 是           | 成功：OK，失败：ERROR                      |
+| message       | String    | 是           | 提示信息                                   |
+| data          | JSON/null | 否           | 成功才有                                   |
+| +id           | int       | 是           | 设备在表中的的id（关联sentence.device_id） |
+| +name         | String    | 是           | 设备名                                     |
+| +createUserId | int       | 是           | 添加设备的用户id                           |
+| +mqttSub      | String    | 是           | mqtt订阅端参数                             |
+| +mqttPub      | String    | 是           | mqtt发布端参数                             |
+
+返回示例：
+
+```json
+{
+    "status": "OK",
+    "message": "设备信息更新成功",
+    "data": {
+        "id": 9,
+        "name": "9号更新",
+        "createUserId": 48,
+        "scribe": "测试mapper",
+        "mqttSub": "spring",
+        "mqttPub": "spring"
+    }
 }
 ```
 
 ## 3. 数据API
 
-*共有4个接口*
+*共有6个接口*
 
-### 3.1 获取词云数据
+### 3.1 获取时间区间内词云数据
 
 `/dataAPI/getWordCloudByTimeSection	[POST]`
 
@@ -363,7 +392,6 @@
 **返回示例：**
 
 ```json
-查询成功
 {
     "sentence": [
         {
@@ -402,15 +430,9 @@
     "message": "数据获取成功",
     "status": "OK"
 }
-
-查询失败
-{
-    "message": "无此设备",
-    "status": "ERROR"
-}
 ```
 
-### 3.2 获取设备语句数据
+###  3.2 获取设备语句所有语句数据
 
 `/dataAPI/getAllSentenceMessageByDeviceId	[POST]`
 
@@ -453,7 +475,6 @@
 **返回示例：**
 
 ```json
-获取成功
 {
     "status": "OK",
     "message": "数据查询成功",
@@ -477,15 +498,10 @@
             "confidence": 0.986234,
             "positiveProb": 0.00619488,
             "negativeProb": 0.993805
-        },
+        }
     ]
 }
 
-获取失败
-{
-    "status": "ERROR",
-    "message": "设备不存在"
-}
 ```
 
 ### 3.3 获取24小时内语句信息
@@ -533,7 +549,6 @@
 **返回示例：**
 
 ```json
-成功
 {
     "status": "OK",
     "message": "最新24小时内的单位时间信息量",
@@ -747,11 +762,6 @@
     }
 }
 
-失败
-{
-    "status": "ERROR",
-    "message": "设备不存在"
-}
 ```
 
 ### 3.4 获取情感饼图数据
@@ -795,7 +805,6 @@
 **返回示例：**
 
 ```json
-成功
 {
     "data": [
         {
@@ -811,16 +820,145 @@
     "status": "OK"
 }
 
-失败
+```
+
+### 3.5 获取时间区间内设备的GPS信息
+
+`/dataAPI/getDeviceGpsByTimeSection	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 返回指定时间段内设备的GPS信息
+
+**参数说明:**
+
+| 参数名称     | 参数类型 | 必要参数 | 参数说明         |
+| ------------ | -------- | -------- | ---------------- |
+| createUserId | int      | 是       | 创建设备用户的id |
+| name         | String   | 是       | 设备名           |
+| startTime    | String   | 是       | 指定的开始时间   |
+| endTime      | String   | 是       | 指定的结束时间   |
+
+**请求示例：**
+
+```json
 {
-    "message": "无此设备",
-    "status": "ERROR"
+    "createUserId":47,
+    "name":"五号设备",
+    "startTime":"2021-11-23 19:50:41",
+    "endTime":"2021-11-23 21:23:42"
 }
 ```
 
+**返回说明：**
+
+| 字段名     | 字段类型  | 是否一定存在 | 字段说明              |
+| ---------- | --------- | ------------ | --------------------- |
+| status     | String    | 是           | 成功：OK，失败：ERROR |
+| message    | String    | 是           | 提示信息              |
+| data       | JSON/null | 否           | 成功才有              |
+| +id        | int       | 是           | gps信息表的自增id     |
+| +deviceId  | int       | 是           | 关联的设备表id        |
+| +longitude | String    | 是           | 经度                  |
+| +latitude  | String    | 是           | 纬度                  |
+| +dateTime  | String    | 是           | 插入信息的时间        |
+
+**返回示例：**
+
+```json
+{
+    "status": "OK",
+    "message": "数据获取成功",
+    "data": [
+        {
+            "id": 1413,
+            "deviceId": 8,
+            "longitude": "118.409",
+            "latitude": "31.54",
+            "dateTime": "2021-11-23 19:50:41"
+        },
+        {
+            "id": 1414,
+            "deviceId": 8,
+            "longitude": "118.409",
+            "latitude": "31.74",
+            "dateTime": "2021-11-23 21:23:42"
+        }
+    ]
+}
+```
+
+### 3.6 获取设备的最后一次GPS信息
+
+`/dataAPI/getLastInfo	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 返回设备的最后一次GPS信息
+
+**参数说明:**
+
+| 参数名称     | 参数类型 | 必要参数 | 参数说明         |
+| ------------ | -------- | -------- | ---------------- |
+| createUserId | int      | 是       | 创建设备用户的id |
+| name         | String   | 是       | 设备名           |
+| startTime    | String   | 是       | 指定的开始时间   |
+| endTime      | String   | 是       | 指定的结束时间   |
+
+**请求示例：**
+
+```json
+{
+    "createUserId":47,
+    "name":"五号设备",
+    "startTime":"2021-11-23 19:50:41",
+    "endTime":"2021-11-23 21:23:42"
+}
+```
+
+**返回说明：**
+
+| 字段名     | 字段类型  | 是否一定存在 | 字段说明              |
+| ---------- | --------- | ------------ | --------------------- |
+| status     | String    | 是           | 成功：OK，失败：ERROR |
+| message    | String    | 是           | 提示信息              |
+| data       | JSON/null | 否           | 成功才有              |
+| +id        | int       | 是           | gps信息表的自增id     |
+| +deviceId  | int       | 是           | 关联的设备表id        |
+| +longitude | String    | 是           | 经度                  |
+| +latitude  | String    | 是           | 纬度                  |
+| +dateTime  | String    | 是           | 插入信息的时间        |
+
+**返回示例：**
+
+```json
+{
+    "status": "OK",
+    "message": "数据获取成功",
+    "data": [
+        {
+            "id": 1413,
+            "deviceId": 8,
+            "longitude": "118.409",
+            "latitude": "31.54",
+            "dateTime": "2021-11-23 19:50:41"
+        },
+        {
+            "id": 1414,
+            "deviceId": 8,
+            "longitude": "118.409",
+            "latitude": "31.74",
+            "dateTime": "2021-11-23 21:23:42"
+        }
+    ]
+}
+```
+
+
+
 ## 4. 提供给树莓派的接口
 
-*共1个接口*
+*共2个接口*
 
 ### 4.1 语句分析及存库
 
@@ -863,24 +1001,467 @@
 **返回示例：**
 
 ```json
-插入成功
 {
-  "status": "OK",
-  "message": "插入数据库成功",
-  "data": {
-    "deviceId": 8,
-    "sentence": "测试mqtt的通信行为test1111",
-    "sentiment": 2,
-    "confidence": 0.581671,
-    "positiveProb": 0.811752,
-    "negativeProb": 0.188248
-  }
+    "status": "OK",
+    "message": "插入数据库成功",
+    "data": {
+        "deviceId": 8,
+        "sentence": "测试mqtt的通信行为test1111",
+        "sentiment": 2,
+        "confidence": 0.581671,
+        "positiveProb": 0.811752,
+        "negativeProb": 0.188248
+    }
 }
 
-插入失败
+```
+
+### 4.2 设备GPS信息存库
+
+`/raspberryPiAPI/insertGps	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 将树莓派传入的数据进行情感分析后进行持久化并通过mqtt通知前端服务
+
+**参数说明:**
+
+| 参数名称  | 参数类型 | 必要参数 | 参数说明 |
+| --------- | -------- | -------- | -------- |
+| deviceId  | int      | 是       | 设备id   |
+| latitude  | String   | 是       | 经度     |
+| longitude | String   | 是       | 纬度     |
+
+**请求示例：**
+
+```json
 {
-  "status": "ERROR",
-  "message": "插入数据库失败，无此设备"
+    "deviceId":8,
+    "latitude":3.5678888888999,
+    "longitude":6.5678999999999
 }
 ```
 
+**返回说明：**
+
+| 字段名     | 字段类型  | 是否一定存在 | 字段说明                      |
+| ---------- | --------- | ------------ | ----------------------------- |
+| status     | String    | 是           | 成功：OK，失败：ERROR         |
+| message    | String    | 是           | 提示信息                      |
+| data       | JSON/null | 否           | 成功才有                      |
+| +deviceId  | int       | 是           | 设备的deviceId（关联user.id） |
+| +longitude | String    | 是           | 经度信息                      |
+| +latitude  | String    | 是           | 纬度信息                      |
+
+**返回示例：**
+
+```json
+{
+    "status": "OK",
+    "message": "插入成功",
+    "data": {
+        "deviceId": 8,
+        "longitude": "6.5678999999999",
+        "latitude": "3.5678888888999"
+    }
+}
+```
+
+## 5. 任务调度接口
+
+*共有6个接口*
+
+### 5.1 添加负向条数超过阈值发送邮件的任务
+
+/job/addNegativeNumJob	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 开启负向条数超过阈值发送邮件的任务
+
+**参数说明:**
+
+| 参数名称       | 参数类型 | 必要参数 | 参数说明     |
+| -------------- | -------- | -------- | ------------ |
+| deviceId       | int      | 是       | 设备id       |
+| jobGroup       | String   | 是       | 任务组名     |
+| negativeMaxNum | int      | 是       | 负向条数阈值 |
+| cron           | String   | 是       | cron表达式   |
+| startTime      | String   | 是       | 开始时间     |
+| endTime        | String   | 是       | 结束时间     |
+| toMail         | String   | 是       | 邮箱账号     |
+
+**请求示例：**
+
+```json
+{
+    "deviceId":8,
+    "jobGroup":"negativeNum",
+    "negativeMaxNum":20,
+    "cron":"0/59 * * * * ?",
+    "startTime":"2021-11-10 19:12:49",
+    "endTime":"2021-11-18 20:19:52",
+    "toMail":"1918404715@qq.com"
+}
+```
+
+**返回说明：**
+
+| 字段名          | 字段类型  | 是否一定存在 | 字段说明              |
+| --------------- | --------- | ------------ | --------------------- |
+| status          | String    | 是           | 成功：OK，失败：ERROR |
+| message         | String    | 是           | 提示信息              |
+| jobData         | JSON/null | 是           | 任务信息              |
+| +jobName        | String    | 是           | 任务名称              |
+| +corn           | String    | 是           | cron表达式            |
+| +toMail         | String    | 是           | 邮箱账号              |
+| +triggrtName    | String    | 是           | 触发器名称            |
+| +startTime      | String    | 是           | 开始时间              |
+| +jobGroup       | String    | 是           | 任务组名              |
+| +endTime        | String    | 是           | 结束时间              |
+| +negativeMaxNum | int       | 是           | 负面阈值              |
+| +deviceId       | int       | 是           | 关联设备的id          |
+
+**返回示例：**
+
+```json
+{
+    "jobData": {
+        "jobName": "8:negativeNum",
+        "cron": "0/59 * * * * ?",
+        "toMail": "1918404715@qq.com",
+        "triggrtName": "Triggrt:8:negativeNum",
+        "startTime": "2021-11-10 19:12:49",
+        "jobGroup": "negativeNum",
+        "endTime": "2021-11-18 20:19:52",
+        "negativeMaxNum": 20,
+        "deviceId": 8
+    },
+    "message": "任务开启成功！！！",
+    "status": "OK"
+}
+```
+
+### 5.2 添加负向条数占比超过阈值发送邮件的任务
+
+/job/addNegativeProJob	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 开启负向条数占比超过阈值发送邮件的任务
+
+**参数说明:**
+
+| 参数名称       | 参数类型 | 必要参数 | 参数说明         |
+| -------------- | -------- | -------- | ---------------- |
+| deviceId       | int      | 是       | 设备id           |
+| jobGroup       | String   | 是       | 任务组名         |
+| negativeMaxPro | double   | 是       | 负向条数占比阈值 |
+| cron           | String   | 是       | cron表达式       |
+| startTime      | String   | 是       | 开始时间         |
+| endTime        | String   | 是       | 结束时间         |
+| toMail         | String   | 是       | 邮箱账号         |
+
+**请求示例：**
+
+```json
+{
+    "deviceId":8,
+    "jobGroup":"negativePro",
+    "negativeMaxPro":0.3,
+    "cron":"0/5 * * * * ?",
+    "startTime":"2021-11-10 19:12:49",
+    "endTime":"2021-11-18 20:19:52",
+    "toMail":"1918404715@qq.com"
+}
+```
+
+**返回说明：**
+
+| 字段名          | 字段类型  | 是否一定存在 | 字段说明              |
+| --------------- | --------- | ------------ | --------------------- |
+| status          | String    | 是           | 成功：OK，失败：ERROR |
+| message         | String    | 是           | 提示信息              |
+| jobData         | JSON/null | 是           | 任务信息              |
+| +jobName        | String    | 是           | 任务名称              |
+| +corn           | String    | 是           | cron表达式            |
+| +toMail         | String    | 是           | 邮箱账号              |
+| +triggrtName    | String    | 是           | 触发器名称            |
+| +startTime      | String    | 是           | 开始时间              |
+| +jobGroup       | String    | 是           | 任务组名              |
+| +endTime        | String    | 是           | 结束时间              |
+| +negativeMaxPro | double    | 是           | 负面阈值条数占比      |
+| +deviceId       | int       | 是           | 关联设备的id          |
+
+**返回示例：**
+
+```json
+{
+    "jobData": {
+        "jobName": "8:negativePro",
+        "cron": "0/5 * * * * ?",
+        "toMail": "1918404715@qq.com",
+        "negativeMaxPro": 0.3,
+        "triggrtName": "Triggrt:8:negativePro",
+        "startTime": "2021-11-10 19:12:49",
+        "jobGroup": "negativePro",
+        "endTime": "2021-11-18 20:19:52",
+        "deviceId": 8
+    },
+    "message": "任务开启成功！！！",
+    "status": "OK"
+}
+```
+
+### 5.3 添加定时发送邮件的任务
+
+/job/addTimingWarningJob	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 开启定时发送邮件的任务
+
+**参数说明:**
+
+| 参数名称  | 参数类型 | 必要参数 | 参数说明   |
+| --------- | -------- | -------- | ---------- |
+| deviceId  | int      | 是       | 设备id     |
+| jobGroup  | String   | 是       | 任务组名   |
+| cron      | String   | 是       | cron表达式 |
+| startTime | String   | 是       | 开始时间   |
+| endTime   | String   | 是       | 结束时间   |
+| toMail    | String   | 是       | 邮箱账号   |
+
+**请求示例：**
+
+```json
+{
+    "deviceId":8,
+    "jobGroup":"timing",
+    "cron":"0/59 * * * * ?",
+    "startTime":"2021-11-10 19:12:49",
+    "endTime":"2021-11-18 20:19:52",
+    "toMail":"1918404715@qq.com"
+}
+```
+
+**返回说明：**
+
+| 字段名       | 字段类型  | 是否一定存在 | 字段说明              |
+| ------------ | --------- | ------------ | --------------------- |
+| status       | String    | 是           | 成功：OK，失败：ERROR |
+| message      | String    | 是           | 提示信息              |
+| jobData      | JSON/null | 是           | 任务信息              |
+| +jobName     | String    | 是           | 任务名称              |
+| +corn        | String    | 是           | cron表达式            |
+| +toMail      | String    | 是           | 邮箱账号              |
+| +triggrtName | String    | 是           | 触发器名称            |
+| +startTime   | String    | 是           | 开始时间              |
+| +jobGroup    | String    | 是           | 任务组名              |
+| +endTime     | String    | 是           | 结束时间              |
+| +deviceId    | int       | 是           | 关联设备的id          |
+
+**返回示例：**
+
+```json
+{
+    "jobData": {
+        "jobName": "8:timing",
+        "cron": "0/59 * * * * ?",
+        "toMail": "1918404715@qq.com",
+        "triggrtName": "Triggrt:8:timing",
+        "startTime": "2021-11-10 19:12:49",
+        "jobGroup": "timing",
+        "endTime": "2021-11-18 20:19:52",
+        "deviceId": 8
+    },
+    "message": "任务开启成功！！！",
+    "status": "OK"
+}
+```
+
+### 5.4 获取指定任务的信息
+
+/job/getJobInfo	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 获取所有任务信息
+
+**参数说明:**
+
+| 参数名称 | 参数类型 | 必要参数 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| deviceId | int      | 是       | 设备id   |
+| jobGroup | String   | 是       | 任务组名 |
+
+**请求示例：**
+
+```json
+{
+    "deviceId":8,
+    "jobGroup":"negativeNum"
+}
+```
+
+**返回说明：**
+
+| 字段名       | 字段类型  | 是否一定存在 | 字段说明        |
+| ------------ | --------- | ------------ | --------------- |
+| jobExists    | boolean   | 是           | job信息是否存在 |
+| jobData      | JSON/null | 是           | 任务信息        |
+| +jobName     | String    | 是           | 任务名称        |
+| +corn        | String    | 是           | cron表达式      |
+| +toMail      | String    | 是           | 邮箱账号        |
+| +triggrtName | String    | 是           | 触发器名称      |
+| +startTime   | String    | 是           | 开始时间        |
+| +jobGroup    | String    | 是           | 任务组名        |
+| +endTime     | String    | 是           | 结束时间        |
+| +deviceId    | int       | 是           | 关联设备的id    |
+| +negativeNum | String    | 否           | 条数阈值job才有 |
+| +negativePro | String    | 否           | 占比阈值job才有 |
+
+**返回示例：**
+
+```json
+{
+    "jobData": {
+        "jobName": "8:negativeNum",
+        "toMail": "1918404715@qq.com",
+        "jobGoup": "negativeNum",
+        "corn": "0/59 * * * * ?",
+        "triggrtName": "Triggrt:8:negativeNum",
+        "startTime": "2021-11-10 19:12:49",
+        "endTime": "2021-11-18 20:19:52",
+        "negativeMaxNum": 20,
+        "deviceId": 8
+    },
+    "jobExists": true
+}
+```
+
+### 5.5 获取所有任务的信息
+
+/job/getJobs	[GET]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 获取所有任务信息
+
+**参数说明:** 无
+
+**请求示例：**
+
+`127.0.0.1:8000/job/getJobs`
+
+**返回说明：**
+
+| 字段名               | 字段类型  | 是否一定存在 | 字段说明                    |
+| -------------------- | --------- | ------------ | --------------------------- |
+| [deviceId]:[jobName] | JSON/null | 是           | 任务名由设备id和jobName拼接 |
+| +jobName             | String    | 是           | 任务名称                    |
+| +corn                | String    | 是           | cron表达式                  |
+| +toMail              | String    | 是           | 邮箱账号                    |
+| +triggrtName         | String    | 是           | 触发器名称                  |
+| +startTime           | String    | 是           | 开始时间                    |
+| +jobGroup            | String    | 是           | 任务组名                    |
+| +endTime             | String    | 是           | 结束时间                    |
+| +deviceId            | int       | 是           | 关联设备的id                |
+| +negativeNum         | String    | 否           | 条数阈值job才有             |
+| +negativePro         | String    | 否           | 占比阈值job才有             |
+
+**返回示例：**
+
+```json
+{
+  "8:negativeNum": {
+    "jobName": "8:negativeNum",
+    "toMail": "1918404715@qq.com",
+    "jobGoup": "negativeNum",
+    "corn": "0/59 * * * * ?",
+    "triggrtName": "Triggrt:8:negativeNum",
+    "startTime": "2021-11-10 19:12:49",
+    "endTime": "2021-11-18 20:19:52",
+    "negativeMaxNum": 20,
+    "deviceId": 8
+  },
+  "8:negativePro": {
+    "jobName": "8:negativePro",
+    "toMail": "1918404715@qq.com",
+    "negativeMaxPro": 0.3,
+    "jobGoup": "negativePro",
+    "corn": "0/59 * * * * ?",
+    "triggrtName": "Triggrt:8:negativePro",
+    "startTime": "2021-11-10 19:12:49",
+    "endTime": "2021-11-18 20:19:52",
+    "deviceId": 8
+  }
+}
+```
+
+### 5.6 停止指定任务
+
+/job/deleteJob	[POST]`
+
+**请求格式:** header应为Content-Type: application/json
+
+**接口说明:** 停止指定任务
+
+**参数说明:**
+
+| 参数名称 | 参数类型 | 必要参数 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| deviceId | int      | 是       | 设备id   |
+| jobGroup | String   | 是       | 任务组名 |
+
+**请求示例：**
+
+```json
+{
+  "deviceId":8,
+  "jobGroup":"negativeNum"
+}
+```
+
+**返回说明：**
+
+| 字段名        | 字段类型  | 是否一定存在 | 字段说明        |
+| ------------- | --------- | ------------ | --------------- |
+| status        | String    | 是           | 是否成功        |
+| message       | String    | 是           | 提示信息        |
+| Data          | JSON/null | 是           | job信息         |
+| jobExists     | boolean   | 是           | job信息是否存在 |
+| +jobData      | JSON/null | 是           | 任务信息        |
+| ++jobName     | String    | 是           | 任务名称        |
+| ++corn        | String    | 是           | cron表达式      |
+| ++toMail      | String    | 是           | 邮箱账号        |
+| ++triggrtName | String    | 是           | 触发器名称      |
+| ++startTime   | String    | 是           | 开始时间        |
+| ++jobGroup    | String    | 是           | 任务组名        |
+| ++endTime     | String    | 是           | 结束时间        |
+| ++deviceId    | int       | 是           | 关联设备的id    |
+| ++negativeNum | String    | 否           | 条数阈值job才有 |
+| ++negativePro | String    | 否           | 占比阈值job才有 |
+
+**返回示例：**
+
+```json
+{
+  "Data": {
+    "jobData": {
+      "jobName": "8:negativeNum",
+      "toMail": "1918404715@qq.com",
+      "jobGoup": "negativeNum",
+      "corn": "0/59 * * * * ?",
+      "triggrtName": "Triggrt:8:negativeNum",
+      "startTime": "2021-11-10 19:12:49",
+      "endTime": "2021-11-18 20:19:52",
+      "negativeMaxNum": 20,
+      "deviceId": 8
+    },
+    "jobExists": true
+  },
+  "message": "8:negativeNum:任务关闭成功！",
+  "status": "OK"
+}
+```
