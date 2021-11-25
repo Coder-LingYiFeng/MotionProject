@@ -31,9 +31,9 @@ spring:
             drop-table-allow: false
   mail:
     default-encoding: UTF-8
-    host: smtp.qq.com   #使用的邮箱服务器
-    username: 3401506758@qq.com   #邮箱账号
-    password: gsxwqkivmfigciji    #开通smtp服务后的授权码
+    host: smtp.163.com   #使用的邮箱服务器
+    username: qingganfenxi21@163.com   #邮箱账号
+    password: KPICHTQMBVFQGUDA    #开通smtp服务后的授权码
     port: 465   #ssh走的465端口
     properties:
       mail:
@@ -47,9 +47,9 @@ spring:
 
 motion:
   api:
-    app-id: "25098237"    #百度API的app-id
-    api-key: "CgU3PcsyB4ZGW6jzNX3P68Ij"   #百度API的api-key
-    secret-key: "uq1FGSHwRuYA3yRfuwc8YgkglCi5lKW7"    #百度API的secret-key
+    app-id: 25233516    #百度API的app-id
+    api-key: w1etS0VbvoMgG0yBi7YpeYUc   #百度API的api-key
+    secret-key: r9eE1d3izBep1TYL13oaRzz424avBTjW    #百度API的secret-key
 
 mqtt:
   broker: tcp://118.31.116.39:1883  #配置mqtt服务器地址
