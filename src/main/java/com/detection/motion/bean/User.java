@@ -26,6 +26,11 @@ public class User {
     //创建时间
     private Date createDate;
 
+    public User(String userName,String passWord){
+        this.userName=userName;
+        this.passWord=passWord;
+    }
+
     public User(String userName) {
         this.userName = userName;
     }

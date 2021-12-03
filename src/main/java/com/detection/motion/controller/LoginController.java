@@ -38,9 +38,9 @@ public class LoginController {
 //        System.out.println("userInfo = " + userInfo);
         //不存在则添加用户
         if (userInfo == null) {
-            User tempUser = new User(userName);
+            User tempUser = new User(userName,passWord);
             userService.save(tempUser);
-            return new Status("OK", "注册成功", tempUser);
+            return new Status("OK", "注册成功", new User(userName));
         }
         return new Status("ERROR", "用户名已存在", null);
     }
